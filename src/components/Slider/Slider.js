@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import $ from 'jquery'
-import NoSSR from 'react-no-ssr'
 import 'slick-carousel'
 import './Slider.scss'
 import 'slick-carousel/slick/slick.css'
@@ -40,7 +39,6 @@ const Slider = () => {
   }, [])
 
   return (
-    <NoSSR>
       <div className="slider">
         <div className="text-slider-wrapper">
           <div className="text-slider">
@@ -402,7 +400,6 @@ const Slider = () => {
           />
         </div>
       </div>
-    </NoSSR>
   )
 }
 
