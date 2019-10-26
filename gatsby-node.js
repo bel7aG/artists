@@ -8,10 +8,22 @@
 
 const path = require('path')
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules']
     }
   })
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /slick-carousel/,
+            use: loaders.null()
+          }
+        ]
+      }
+    })
+  }
 }

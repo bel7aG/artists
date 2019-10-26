@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-plugin-purgecss`,
       options: {
         name: `gatsby-starter-default`,
         short_name: `starter`,
@@ -26,7 +27,11 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#fff`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        ignore: [
+          '/node_modules/slick-carousel/slick/slick.css',
+          '/node_modules/slick-carousel/slick/slick-theme.css'
+        ]
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
