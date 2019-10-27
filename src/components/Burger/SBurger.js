@@ -7,13 +7,16 @@ export const SBurger = styled.div`
   right: 0;
   transform: translateX(2.5%);
   bottom: 7rem;
-  min-width: 6rem;
-  max-width: 6rem;
   cursor: pointer;
 
+  &,
   > div {
-    width: 6rem;
-    height: 3rem;
+    max-width: 6rem;
+    min-width: 6rem;
+    min-height: 3rem;
+    max-height: 3rem;
+  }
+  > div {
     > span {
       position: absolute;
       height: 100%;
