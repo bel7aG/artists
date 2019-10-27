@@ -10,6 +10,13 @@
 }
 
 html {
+  font: 62.5% BebasNeue-Bold, sans-serif !important;
+}
+
+body {
+}
+html {
+  font-size: 62.5% !important;
   overflow: hidden !important;
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -17,6 +24,7 @@ html {
 }
 body {
   margin: 0;
+  font-size: 1.6rem !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
