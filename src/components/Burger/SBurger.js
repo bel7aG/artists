@@ -12,6 +12,8 @@ export const SBurger = styled.div`
   cursor: pointer;
 
   > div {
+    width: 6rem;
+    height: 3rem;
     > span {
       position: absolute;
       height: 100%;
