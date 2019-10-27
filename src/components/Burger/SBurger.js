@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const SBurger = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 9911;
   height: 0;
   right: 0;
