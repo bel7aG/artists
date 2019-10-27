@@ -5,6 +5,7 @@ export default () => {
   animation
     .to('.scrollbar', 0, {
       opacity: 0,
+      display: 'none',
       ease: Power2.easeInOut
     })
     .to('.line', 3, {

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { openMenuAnimation, closeMenuAnimation } from 'tweens'
 import { SBurger } from './SBurger'
 import { Mask } from 'components'
+import { toggleMenuAction, toggleSearchAction } from 'actions'
 
-const Burger = () => {
-  const [menuState, setMenuState] = useState(false)
+const Burger = ({ menu, search, toggleMenuAction, toggleSearchAction }) => {
   const [mask, setMask] = useState(false)
 
   const handleMenu = () => {
@@ -14,11 +16,12 @@ const Burger = () => {
       setMask(false)
     }, 5000)
 
-    if (menuState) {
-      setMenuState(false)
-      closeMenuAnimation()
+    toggleMenuAction(menu)
+
+    if (menu) {
+      toggleSearchAction(false)
+      closeMenuAnimation(search)
     } else {
-      setMenuState(true)
       openMenuAnimation()
     }
   }
@@ -35,4 +38,18 @@ const Burger = () => {
   )
 }
 
-export default Burger
+Burger.propTypes = {
+  toggleMenuAction: PropTypes.func.isRequired,
+  menu: PropTypes.bool.isRequired,
+  search: PropTypes.bool.isRequired
+}
+
+const mapStateToProps = ({ mechanism: { menu, search } }) => ({
+  menu,
+  search
+})
+
+export default connect(
+  mapStateToProps,
+  { toggleMenuAction, toggleSearchAction }
+)(Burger)

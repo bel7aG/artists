@@ -1,8 +1,21 @@
-import { TimelineLite, Power2, Elastic } from 'gsap'
+import { TimelineLite, Power2, Elastic, TweenMax } from 'gsap'
 
-export const openMenuAnimation = async () => {
+export const openMenuAnimation = () => {
+  TweenMax.to('.scrollbar', 0.4, {
+    opacity: 0,
+    ease: Power2.easeNone
+  })
+  TweenMax.to('.scrollbar', 0, {
+    display: 'none',
+    delay: 0.42
+  })
+
   const menuAnimation = new TimelineLite()
-  await menuAnimation
+  menuAnimation
+    .to('.search-svg', 0.3, {
+      opacity: 0,
+      ease: Power2.easeInOut
+    })
     .to('.menu-layer', 1.6, {
       height: '100%',
       ease: Power2.easeInOut
@@ -39,7 +52,7 @@ export const openMenuAnimation = async () => {
       delay: -0.8
     })
     .fromTo(
-      '.menu-items__left, .menu-items__right',
+      '.menu-items-wrapper',
       0.99,
       {
         opacity: 0,
@@ -56,15 +69,19 @@ export const openMenuAnimation = async () => {
     )
 }
 
-export const closeMenuAnimation = async () => {
+export const closeMenuAnimation = () => {
+  TweenMax.to('.block-1', 0, {
+    width: '5%',
+    ease: Power2.easeInOut
+  })
   const menuAnimation = new TimelineLite()
-  await menuAnimation
-    .to('.menu-items__left, .menu-items__right', 0.8, {
+  menuAnimation
+    .to('.menu-items-wrapper', 0.8, {
       opacity: 0,
       y: 100,
       ease: Power2.easeInOut
     })
-    .to('.menu-items__left, .menu-items__right', 0, {
+    .to('.menu-items-wrapper', 0, {
       display: 'none',
       ease: Power2.easeInOut
     })
@@ -76,6 +93,7 @@ export const closeMenuAnimation = async () => {
       height: 0,
       ease: Power2.easeInOut
     })
+
     .to('.menu-burger__item', 0.3, {
       backgroundColor: '#fff',
       delay: -0.98
@@ -96,6 +114,12 @@ export const closeMenuAnimation = async () => {
       delay: -1.28,
       ease: Elastic.easeInOut
     })
+
+    .to('.search-svg', 0.56, {
+      opacity: 1,
+      transform: 'translate(-50%, -50%) rotate(0)',
+      ease: Power2.easeInOut
+    })
     .fromTo(
       '.menu-burger__item-2',
       1.4,
@@ -109,4 +133,8 @@ export const closeMenuAnimation = async () => {
         ease: Power2.easeInOut
       }
     )
+    .to('.text-slide', 0.8, {
+      opacity: 1,
+      ease: Power2.easeInOut
+    })
 }

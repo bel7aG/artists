@@ -1,12 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { SMenu, SMenuLayer } from './SMenu'
-import { Burger } from 'components'
+import { Burger, SearchSVG } from 'components'
+import { openSearchTweens, closeSearchTweens } from 'tweens'
+import { toggleSearchAction } from 'actions'
 
-const Menu = ({ children }) => {
+const Menu = ({ children, search, toggleSearchAction }) => {
+  const handleSearch = () => {
+    if (!search) {
+      console.log(search)
+      toggleSearchAction(true)
+      openSearchTweens()
+    } else {
+    }
+  }
+  console.log(search)
+
   return (
     <SMenu className="menu">
       <Burger />
+      <SearchSVG handleSearch={handleSearch} />
       <SMenuLayer className="menu-layer" />
       {children}
     </SMenu>
@@ -14,7 +28,16 @@ const Menu = ({ children }) => {
 }
 
 Menu.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  search: PropTypes.bool.isRequired,
+  toggleSearchAction: PropTypes.func.isRequired
 }
 
-export default Menu
+const mapStateToProps = ({ mechanism: { search } }) => ({
+  search
+})
+
+export default connect(
+  mapStateToProps,
+  { toggleSearchAction }
+)(Menu)

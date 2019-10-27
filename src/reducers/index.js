@@ -1,9 +1,10 @@
-import { menu } from './Mechanism'
+import { menu, search } from './Mechanism'
 
 import { combineReducers } from 'redux'
 
 const mechanism = combineReducers({
-  menu
+  menu,
+  search
 })
 
 export default combineReducers({

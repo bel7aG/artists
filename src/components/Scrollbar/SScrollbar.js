@@ -3,19 +3,23 @@ import { Scrollbars } from 'react-custom-scrollbars'
 
 export const SScrollbar = styled(Scrollbars)`
   > div {
+    z-index: 0;
     &:first-child {
-      overflow: hidden;
-      padding: 3rem calc(7rem + 5%) 3rem calc(3rem + 3%);
+      min-height: 100vh;
+      padding: 3rem 7rem;
+      @media (max-width: 768px) {
+        padding: 3rem 2rem;
+      }
     }
     &:last-child {
       width: 2px !important;
-      background-color: #ccc;
-      right: 3rem !important;
+      background-color: #3c3c3c;
+      right: 2.7rem !important;
       margin: auto 0;
       max-height: 71%;
       min-height: 20rem;
       > div {
-        background-color: #5c5c5c !important;
+        background-color: #fff !important;
         width: 2px !important;
         perspective: 90000;
         border-radius: 0 !important;

@@ -8,6 +8,19 @@ export const SMenu = styled.div`
   background: #0f0f0f;
   transform: translateY(100vh);
   z-index: 50;
+
+  > .menu-items-wrapper {
+    display: none;
+  }
+  > svg {
+    position: absolute;
+    z-index: 1;
+    width: 45px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
 `
 
 // the white layer

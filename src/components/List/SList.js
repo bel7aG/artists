@@ -24,16 +24,19 @@ export const SList = styled.ul`
       }
     }
   }
+
   &.menu-items__left {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 3rem;
-    font-family: BebasNeue-Bold;
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
+    span {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 2rem;
+      line-height: 3rem;
+      font-family: BebasNeue-Bold;
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+      }
     }
   }
 

@@ -1,3 +1,4 @@
 import menu from './MenuReducer'
+import search from './SearchReducer'
 
-export { menu }
+export { menu, search }
