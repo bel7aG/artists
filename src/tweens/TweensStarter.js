@@ -30,7 +30,7 @@ export default () => {
       opacity: 0,
       ease: Power2.easeInOut
     })
-    .to('.block-1, .block-2, .block-3', 1, {
+    .to('.block-1, .block-2, .menu', 1, {
       y: 0
     })
     .to('.image-slider ', 2, {
