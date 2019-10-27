@@ -7,7 +7,8 @@ export const SBurger = styled.div`
   right: 0;
   transform: translateX(2.5%);
   bottom: 7rem;
-  width: 6rem;
+  min-width: 6rem;
+  max-width: 6rem;
   cursor: pointer;
 
   > div {
