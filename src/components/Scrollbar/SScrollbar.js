@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Scrollbars } from 'react-custom-scrollbars'
 
 export const SScrollbar = styled(Scrollbars)`
+  display: block;
   > div {
     z-index: 0;
     &:first-child {
