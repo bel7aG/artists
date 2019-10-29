@@ -5,7 +5,6 @@ import { SSearchForm } from './SSearchForm'
 import { SearchField as renderSearchField } from 'components'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import { connectableObservableDescriptor } from 'C:/Users/bel7a/AppData/Local/Microsoft/TypeScript/3.6/node_modules/rxjs/internal/observable/ConnectableObservable'
 
 const ARTISTS_APOLLO_QUERY = gql`
   query Search($query: String!) {

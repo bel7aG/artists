@@ -1,3 +1,3 @@
-import { fetchArtists } from './Artists'
+import { fecthArtists } from './Artists'
 
-export { fetchArtists }
+export { fecthArtists }
