@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { SSearchField } from './SSearchField'
-import { red } from 'ansi-colors'
 
 const SearchField = ({
   input,
@@ -24,7 +23,7 @@ const SearchField = ({
 
   return (
     <SSearchField
-      stylish={disabled && { color: 'red', borderColor: 'red' }}
+      stylish={disabled && { color: '#bebebe', borderColor: '#bebebe' }}
       {...input}
       disabled={disabled}
       className={className}

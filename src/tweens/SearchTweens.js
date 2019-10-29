@@ -1,4 +1,4 @@
-import { TimelineLite, Power2 } from 'gsap'
+import { TimelineLite, Power2, Elastic } from 'gsap'
 
 export const openSearchTweens = () => {
   const searchAnimation = new TimelineLite()
@@ -33,4 +33,24 @@ export const openSearchTweens = () => {
         ease: Power2.easeInOut
       }
     )
+}
+
+const searchAnimation = new TimelineLite()
+export const load = duration => {
+  searchAnimation
+    .to('.search-svg-box', 1, {
+      transform: 'translate(-50%, -50%) rotate(-90deg) scale(1)',
+      ease: Elastic.easeInOut
+    })
+    .to('.search-svg-box', duration - 1, {
+      transform: 'translate(-50%, -50%) rotate(4230deg) scale(1)',
+      ease: Elastic.easeInOut
+    })
+}
+
+export const unload = () => {
+  searchAnimation.to('.search-svg-box', 1, {
+    transform: 'translate(-50%, -50%) rotate(-90deg) scale(0)',
+    ease: Power2.easeInOut
+  })
 }

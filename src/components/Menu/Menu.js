@@ -24,7 +24,7 @@ const Menu = ({ children, search, toggleSearchAction }) => {
   return (
     <SMenu className="menu">
       <Burger />
-      <div>
+      <div className="search-svg-box">
         <Mask mask={searchSVGMask} />
         <SearchSVG handleSearch={handleSearch} />
       </div>

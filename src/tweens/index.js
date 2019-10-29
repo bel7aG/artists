@@ -1,11 +1,12 @@
 import TweensStarter from './TweensStarter'
 import { openMenuAnimation, closeMenuAnimation } from './MenuAnimation'
-import { openSearchTweens, closeSearchTweens } from './SearchTweens'
+import { openSearchTweens, load, unload } from './SearchTweens'
 
 export {
   TweensStarter,
   openMenuAnimation,
   closeMenuAnimation,
   openSearchTweens,
-  closeSearchTweens
+  load,
+  unload
 }
