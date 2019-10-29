@@ -1,3 +1,4 @@
+import Layout from './Layout'
 import Layer from './Layer'
 import Slider from './Slider'
 import Burger from './Burger'
@@ -9,12 +10,14 @@ import Flex from './Flex'
 import Menu from './Menu'
 import List from './List'
 import Wrapper from './Wrapper'
-import Form from './Form'
+import SearchForm from './SearchForm'
 import SearchField from './SearchField'
+import SEO from './SEO'
 
 export * from './SVG'
 
 export {
+  Layout as default,
   Layer,
   Slider,
   Burger,
@@ -26,6 +29,7 @@ export {
   Menu,
   List,
   Wrapper,
-  Form,
-  SearchField
+  SearchForm,
+  SearchField,
+  SEO
 }

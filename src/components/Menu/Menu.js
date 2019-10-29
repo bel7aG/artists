@@ -8,19 +8,14 @@ import { toggleSearchAction } from 'actions'
 
 const Menu = ({ children, search, toggleSearchAction }) => {
   const handleSearch = () => {
-    if (!search) {
-      console.log(search)
-      toggleSearchAction(true)
-      openSearchTweens()
-    } else {
-    }
+    toggleSearchAction(true)
+    openSearchTweens(search)
   }
-  console.log(search)
 
   return (
     <SMenu className="menu">
       <Burger />
-      <SearchSVG handleSearch={handleSearch} />
+      <SearchSVG maskWhenOpened={search} handleSearch={handleSearch} />
       <SMenuLayer className="menu-layer" />
       {children}
     </SMenu>

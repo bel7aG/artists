@@ -12,14 +12,18 @@ export const SMenu = styled.div`
   > .menu-items-wrapper {
     display: none;
   }
-  > svg {
-    position: absolute;
-    z-index: 1;
-    width: 45px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
+  > div:nth-child(2) {
+    &,
+    > svg {
+      position: absolute;
+      z-index: 1;
+      width: 45px;
+      height: 45px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
   }
 `
 

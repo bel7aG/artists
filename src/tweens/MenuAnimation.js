@@ -1,6 +1,6 @@
 import { TimelineLite, Power2, Elastic, TweenMax } from 'gsap'
 
-export const openMenuAnimation = () => {
+export const openMenuAnimation = whenSearchOpenGoFast => {
   TweenMax.to('.scrollbar', 0.4, {
     opacity: 0,
     ease: Power2.easeNone
@@ -57,11 +57,12 @@ export const openMenuAnimation = () => {
       {
         opacity: 0,
         y: 100,
+        delay: whenSearchOpenGoFast ? -14 : -0.7,
         display: 'none'
       },
       {
         opacity: 1,
-        delay: -0.7,
+        delay: whenSearchOpenGoFast ? -14 : -0.7,
         y: 0,
         display: 'block',
         ease: Power2.easeInOut

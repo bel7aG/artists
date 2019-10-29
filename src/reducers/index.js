@@ -1,3 +1,4 @@
+import { reducer as form } from 'redux-form'
 import { menu, search } from './Mechanism'
 
 import { combineReducers } from 'redux'
@@ -8,5 +9,6 @@ const mechanism = combineReducers({
 })
 
 export default combineReducers({
-  mechanism
+  mechanism,
+  form
 })

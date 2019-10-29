@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import './layout.css'
+import './Layout.scss'
 
-import { Scrollbar, Wrapper, Layer, Slider, Menu, Flex, List } from 'components'
+import { Scrollbar, SearchForm, Layer, Slider, Menu, Flex, List } from 'components'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
                 <span>Wiki</span>
               </List>
             </Flex>
-            <Flex stylish={{ maxWidth: '62.5%' }}>
+            <Flex stylish={{ marginTop: '0.7rem', maxWidth: '62.5%' }}>
               <List className="menu-items__right">
                 <h1>Home</h1>
                 <h1>Artists</h1>
@@ -42,7 +42,10 @@ const Layout = ({ children }) => {
             </Flex>
           </Flex>
         </Flex>
-        <Scrollbar>{children}</Scrollbar>
+        <Scrollbar>
+          <SearchForm />
+          {children}
+        </Scrollbar>
       </Menu>
       <Layer />
       <Slider />

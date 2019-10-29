@@ -32,9 +32,9 @@ module.exports = {
     {
       resolve: 'gatsby-source-graphql',
       options: {
-        typeName: 'RMAPI',
-        fieldName: 'rickAndMorty',
-        url: 'https://rickandmortyapi.com/graphql'
+        typeName: 'bel7aGIsArtist',
+        fieldName: 'Swapcard',
+        url: 'https://graphbrainz.herokuapp.com/'
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

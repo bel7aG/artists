@@ -6,6 +6,7 @@ export const SMask = styled.span`
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: 1000;
+  z-index: 100011;
   background-color: transparent;
+  cursor: default;
 `

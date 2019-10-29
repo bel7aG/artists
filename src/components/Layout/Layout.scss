@@ -1,6 +1,6 @@
 @font-face {
   font-family: BebasNeue-Bold;
-  src: url('../assets/fonts/bebas-neue/BebasNeue-Bold.otf');
+  src: url('../../assets/fonts/bebas-neue/BebasNeue-Bold.otf');
 }
 
 * {
@@ -10,12 +10,10 @@
 }
 
 html {
-  font: 62.5% BebasNeue-Bold, sans-serif !important;
 }
 
-body {
-}
 html {
+  font: 62.5% BebasNeue-Bold, sans-serif !important;
   font-size: 62.5% !important;
   overflow: hidden !important;
   font-family: sans-serif;

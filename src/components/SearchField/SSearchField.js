@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const SSearchField = styled.input`
   font-family: BebasNeue-Bold !important;
@@ -16,10 +16,21 @@ export const SSearchField = styled.input`
   font-family: Roboto;
   outline: 0;
   line-height: 1rem;
+  transition: color 0.4s linear;
+  ${props =>
+    props.stylish &&
+    css`
+      ${{ ...props.stylish }}
+    `}
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #fff;
     letter-spacing: 8px;
     opacity: 1; /* Firefox */
+    ${props =>
+      props.stylish &&
+      css`
+        ${{ ...props.stylish }}
+      `}
   }
 `

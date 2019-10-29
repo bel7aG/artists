@@ -1,5 +1,5 @@
 import styled from 'styled-components'
 
-export const SForm = styled.form`
+export const SSearchForm = styled.form`
   position: relative;
 `
