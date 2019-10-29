@@ -1,21 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { SMenu, SMenuLayer } from './SMenu'
-import { Burger, SearchSVG } from 'components'
+import { Burger, Mask, SearchSVG } from 'components'
 import { openSearchTweens, closeSearchTweens } from 'tweens'
 import { toggleSearchAction } from 'actions'
-
 const Menu = ({ children, search, toggleSearchAction }) => {
+  const [searchSVGMask, setSearchSVGMask] = useState(false)
+
   const handleSearch = () => {
     toggleSearchAction(true)
     openSearchTweens(search)
   }
 
+  useEffect(() => {
+    if (search) {
+      setSearchSVGMask(true)
+    } else {
+      setSearchSVGMask(false)
+    }
+  }, [search])
+
   return (
     <SMenu className="menu">
       <Burger />
-      <SearchSVG maskWhenOpened={search} handleSearch={handleSearch} />
+      <div>
+        <Mask mask={searchSVGMask} />
+        <SearchSVG handleSearch={handleSearch} />
+      </div>
       <SMenuLayer className="menu-layer" />
       {children}
     </SMenu>

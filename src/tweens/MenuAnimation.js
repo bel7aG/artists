@@ -68,6 +68,7 @@ export const openMenuAnimation = whenSearchOpenGoFast => {
         ease: Power2.easeInOut
       }
     )
+  return menuAnimation
 }
 
 export const closeMenuAnimation = () => {
