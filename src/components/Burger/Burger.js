@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { openMenuAnimation, closeMenuAnimation } from 'tweens'
@@ -8,6 +8,10 @@ import { toggleMenuAction, toggleSearchAction } from 'actions'
 
 const Burger = ({ menu, search, toggleMenuAction, toggleSearchAction }) => {
   const [mask, setMask] = useState(false)
+
+  useEffect(() => {
+    toggleMenuAction(true)
+  }, [])
 
   const handleMenu = () => {
     setMask(true)
@@ -20,9 +24,9 @@ const Burger = ({ menu, search, toggleMenuAction, toggleSearchAction }) => {
 
     if (menu) {
       toggleSearchAction(false)
-      closeMenuAnimation(search)
+      closeMenuAnimation()
     } else {
-      openMenuAnimation()
+      openMenuAnimation(search)
     }
   }
 

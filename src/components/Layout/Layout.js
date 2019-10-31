@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import { Link } from '@reach/router'
 
+import { Scrollbar, SearchForm, Slider, Menu, Layer, Flex, List } from 'components'
+import { closeMenuAnimation, handleArtistsTweens, handleHomeTweens } from 'tweens'
 import './Layout.scss'
 
-import { Scrollbar, SearchForm, Layer, Slider, Menu, Flex, List } from 'components'
-
-const Layout = ({ children }) => {
+const Layout = ({ children, renderSlider = false }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -16,6 +17,10 @@ const Layout = ({ children }) => {
       }
     }
   `)
+
+  const handleMenuLink = () => {
+    closeMenuAnimation()
+  }
 
   return (
     <>
@@ -29,19 +34,16 @@ const Layout = ({ children }) => {
             <Flex stylish={{ x: 'flex-end', minWidth: '29%', maxWidth: '22rem' }}>
               <List className="menu-items__left">
                 <span>
-                  {' '}
                   <a target="_blank" href="https://instagram.com/belhassengh">
                     Instagram
                   </a>
                 </span>
                 <span>
-                  {' '}
                   <a target="_blank" href="https://instagram.com/belhassengh">
                     Facebook
                   </a>
                 </span>
                 <span>
-                  {' '}
                   <a target="_blank" href="https://instagram.com/belhassengh">
                     Github
                   </a>
@@ -50,13 +52,20 @@ const Layout = ({ children }) => {
             </Flex>
             <Flex stylish={{ marginTop: '0.7rem', maxWidth: '62.5%' }}>
               <List className="menu-items__right">
-                <h1>Home</h1>
-                <h1>Artists</h1>
-                <h1>Contact</h1>
+                <h1 onClick={handleHomeTweens}>
+                  <Link to="/">Home</Link>
+                </h1>
+                <h1 onClick={handleArtistsTweens}>
+                  <Link to="/artists">Artists</Link>
+                </h1>
+                <h1 onClick={handleMenuLink}>
+                  <Link to="/">Contact</Link>
+                </h1>
               </List>
             </Flex>
           </Flex>
         </Flex>
+
         <Scrollbar>
           <SearchForm />
           {children}
@@ -69,7 +78,8 @@ const Layout = ({ children }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  renderSlider: PropTypes.bool
 }
 
 export default Layout

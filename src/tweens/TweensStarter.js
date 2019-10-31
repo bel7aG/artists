@@ -1,13 +1,9 @@
 import { TimelineLite, Power2 } from 'gsap'
 
-export default () => {
-  const animation = new TimelineLite()
+const animation = new TimelineLite()
+
+export const StarterTweens = () => {
   animation
-    .to('.scrollbar', 0, {
-      opacity: 0,
-      display: 'none',
-      ease: Power2.easeInOut
-    })
     .to('.line', 3, {
       width: '50vw',
       ease: Power2.easeIn
@@ -31,6 +27,7 @@ export default () => {
       opacity: 0,
       ease: Power2.easeInOut
     })
+
     .to('.block-1, .block-2, .menu', 1, {
       y: 0
     })

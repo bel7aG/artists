@@ -34,8 +34,13 @@ const Slider = ({ children }) => {
       nextArrow: $('.next')
     }
 
-    $('.image-slider').slick(sickPrimary)
-    $('.text-slider').slick(sickSecondary)
+    $('.image-slider')
+      .not('.slick-initialized')
+      .slick(sickPrimary)
+
+    $('.text-slider')
+      .not('.slick-initialized')
+      .slick(sickSecondary)
   }, [])
 
   return (

@@ -1,17 +1,12 @@
 import { TimelineLite, Power2, Elastic, TweenMax } from 'gsap'
 
 export const openMenuAnimation = whenSearchOpenGoFast => {
-  TweenMax.to('.scrollbar', 0.4, {
-    opacity: 0,
-    ease: Power2.easeNone
-  })
-  TweenMax.to('.scrollbar', 0, {
-    display: 'none',
-    delay: 0.42
-  })
-
   const menuAnimation = new TimelineLite()
   menuAnimation
+    .to('.scrollbar', whenSearchOpenGoFast ? 0.4 : 0, {
+      opacity: 0,
+      ease: Power2.linear
+    })
     .to('.search-svg', 0.3, {
       opacity: 0,
       ease: Power2.easeInOut
@@ -57,12 +52,12 @@ export const openMenuAnimation = whenSearchOpenGoFast => {
       {
         opacity: 0,
         y: 100,
-        delay: whenSearchOpenGoFast ? -14 : -0.7,
+        delay: whenSearchOpenGoFast ? -2 : -0.7,
         display: 'none'
       },
       {
         opacity: 1,
-        delay: whenSearchOpenGoFast ? -14 : -0.7,
+        delay: whenSearchOpenGoFast ? -2 : -0.7,
         y: 0,
         display: 'block',
         ease: Power2.easeInOut
@@ -72,6 +67,10 @@ export const openMenuAnimation = whenSearchOpenGoFast => {
 }
 
 export const closeMenuAnimation = () => {
+  TweenMax.to('.scrollbar', 0, {
+    opacity: 0,
+    ease: Power2.easeNone
+  })
   TweenMax.to('.block-1', 0, {
     width: '5%',
     ease: Power2.easeInOut
@@ -139,4 +138,31 @@ export const closeMenuAnimation = () => {
       opacity: 1,
       ease: Power2.easeInOut
     })
+
+  return menuAnimation
+}
+
+export const handleArtistsTweens = () => {
+  closeMenuAnimation()
+    .to('.slider', 2, {
+      y: '-100vh',
+      delay: -3.2,
+      ease: Power2.easeInOut
+    })
+    .to('.slider', 0.8, {
+      display: 'none',
+      delay: -1.2
+    })
+}
+
+export const handleHomeTweens = () => {
+  closeMenuAnimation().to(
+    '.slider',
+    0,
+    {
+      y: 0,
+      display: 'block'
+    },
+    0
+  )
 }

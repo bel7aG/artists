@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { SMenu, SMenuLayer } from './SMenu'
 import { Burger, Mask, SearchSVG } from 'components'
-import { openSearchTweens, closeSearchTweens } from 'tweens'
+import { openSearchTweens } from 'tweens'
 import { toggleSearchAction } from 'actions'
 
 const Menu = ({ children, search, toggleSearchAction = false }) => {
