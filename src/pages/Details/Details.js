@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const Details = () => {
   return (
-    <>
-      <h1>plplplplplplpplplplpl</h1>
+    <div>
+      <h1>bel7aG details</h1>
       <h2>okokokokokokok</h2>
       <h2>okokokokokokok</h2>
       <h2>okokokokokokok</h2>
-    </>
+      <h2>okokokokokokok</h2>
+      <h2>okokokokokokok</h2>
+      <h2>okokokokokokok</h2>
+    </div>
   )
 }
 
