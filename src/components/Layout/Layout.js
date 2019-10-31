@@ -28,9 +28,24 @@ const Layout = ({ children }) => {
           <Flex direction="row" stylish={{ height: '40rem', x: 'space-around' }}>
             <Flex stylish={{ x: 'flex-end', minWidth: '29%', maxWidth: '22rem' }}>
               <List className="menu-items__left">
-                <span>Instagram</span>
-                <span>Facebook</span>
-                <span>Wiki</span>
+                <span>
+                  {' '}
+                  <a target="_blank" href="https://instagram.com/belhassengh">
+                    Instagram
+                  </a>
+                </span>
+                <span>
+                  {' '}
+                  <a target="_blank" href="https://instagram.com/belhassengh">
+                    Facebook
+                  </a>
+                </span>
+                <span>
+                  {' '}
+                  <a target="_blank" href="https://instagram.com/belhassengh">
+                    Github
+                  </a>
+                </span>
               </List>
             </Flex>
             <Flex stylish={{ marginTop: '0.7rem', maxWidth: '62.5%' }}>

@@ -5,13 +5,18 @@ import { SMenu, SMenuLayer } from './SMenu'
 import { Burger, Mask, SearchSVG } from 'components'
 import { openSearchTweens, closeSearchTweens } from 'tweens'
 import { toggleSearchAction } from 'actions'
-const Menu = ({ children, search, toggleSearchAction }) => {
+
+const Menu = ({ children, search, toggleSearchAction = false }) => {
   const [searchSVGMask, setSearchSVGMask] = useState(false)
 
   const handleSearch = () => {
     toggleSearchAction(true)
     openSearchTweens(search)
   }
+
+  useEffect(() => {
+    toggleSearchAction(false)
+  }, [])
 
   useEffect(() => {
     if (search) {

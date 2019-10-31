@@ -1,1 +1,1 @@
-export { default } from './ReduxWrapper'
+export * from './ReduxWrapper'

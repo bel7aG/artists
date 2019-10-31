@@ -1,1 +1,1 @@
-export { default as wrapRootElement } from 'store'
+export { default as wrapRootElement } from 'Application'
