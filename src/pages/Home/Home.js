@@ -15,13 +15,6 @@ export const SHome = styled.div`
 const Home = ({ fecthArtists, artists }) => {
   const [text, setText] = useState('')
   console.log(artists)
-  console.log(artists)
-  console.log(artists)
-  console.log(artists)
-  console.log(artists)
-  console.log(artists)
-  console.log(artists)
-  console.log(artists)
 
   const handleSubmitForm = ({ searchField }) => {
     alert(searchField)
