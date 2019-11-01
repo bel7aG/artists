@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { SMenu, SMenuLayer } from './SMenu'
-import { Burger, Mask, SearchSVG } from 'components'
+import { Burger, MenuNavigation, Mask, SearchSVG } from 'components'
 import { openSearchTweens } from 'tweens'
-import { toggleSearchAction } from 'actions'
+import { toggleMenuAction, toggleSearchAction } from 'actions'
 
-const Menu = ({ children, search, toggleSearchAction = false }) => {
+const Menu = ({ children, menu, search, toggleSearchAction, toggleMenuAction }) => {
   const [searchSVGMask, setSearchSVGMask] = useState(false)
 
   const handleSearch = () => {
@@ -28,12 +28,22 @@ const Menu = ({ children, search, toggleSearchAction = false }) => {
 
   return (
     <SMenu className="menu">
-      <Burger />
+      <Burger
+        menu={menu}
+        search={search}
+        toggleMenuAction={toggleMenuAction}
+        toggleSearchAction={toggleSearchAction}
+      />
       <div className="search-svg-box">
         <Mask mask={searchSVGMask} />
         <SearchSVG handleSearch={handleSearch} />
       </div>
       <SMenuLayer className="menu-layer" />
+      <MenuNavigation
+        menu={menu}
+        toggleSearchAction={toggleSearchAction}
+        toggleMenuAction={toggleMenuAction}
+      />
       {children}
     </SMenu>
   )
@@ -41,15 +51,18 @@ const Menu = ({ children, search, toggleSearchAction = false }) => {
 
 Menu.propTypes = {
   children: PropTypes.node.isRequired,
+  menu: PropTypes.bool.isRequired,
   search: PropTypes.bool.isRequired,
+  toggleMenuAction: PropTypes.func.isRequired,
   toggleSearchAction: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ mechanism: { search } }) => ({
+const mapStateToProps = ({ mechanism: { menu, search } }) => ({
+  menu,
   search
 })
 
 export default connect(
   mapStateToProps,
-  { toggleSearchAction }
+  { toggleSearchAction, toggleMenuAction }
 )(Menu)

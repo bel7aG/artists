@@ -13,6 +13,11 @@ import Wrapper from './Wrapper'
 import SearchForm from './SearchForm'
 import SearchField from './SearchField'
 import SEO from './SEO'
+import MenuNavigation from './MenuNavigation'
+import Results from './Results'
+import Artist from './Artist'
+import Favorits from './Favorits'
+import Image from './image'
 
 export * from './SVG'
 
@@ -31,5 +36,10 @@ export {
   Wrapper,
   SearchForm,
   SearchField,
-  SEO
+  SEO,
+  MenuNavigation,
+  Results,
+  Artist,
+  Favorits,
+  Image
 }

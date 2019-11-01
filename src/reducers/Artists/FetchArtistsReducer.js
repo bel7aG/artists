@@ -15,10 +15,18 @@ export default (state = INIT_STATE, action) => {
 
   switch (type) {
     case FETCH_ARTISTS:
-      const { loading, artists, error } = payload
+      const {
+        loading,
+        payload: { nodes, pageInfo, totalCount },
+        error
+      } = payload
       return {
         loading,
-        artists,
+        artists: {
+          nodes,
+          pageInfo,
+          totalCount
+        },
         error
       }
     default:

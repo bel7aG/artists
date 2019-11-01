@@ -13,6 +13,16 @@ export const FlexRow = styled.div`
       ${{ ...props.stylish }}
     `}
 
+  .artists-favorit {
+    color: #000;
+    cursor: pointer;
+    &:hover {
+      svg {
+        fill: #d58e00;
+      }
+    }
+  }
+
   > * {
     z-index: 1;
     flex: ${props => (props.stylish && props.stylish.flex) || 1};

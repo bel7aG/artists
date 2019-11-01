@@ -2,15 +2,14 @@ import styled from 'styled-components'
 import { Scrollbars } from 'react-custom-scrollbars'
 
 export const SScrollbar = styled(Scrollbars)`
-  display: none;
-
+  display: ${props => (props.className === 'scrollbar' ? 'none' : 'block')};
   > div {
-    z-index: 0;
+    z-index: 10;
     &:first-child {
       min-height: 100vh;
       padding: 3rem 7rem;
       @media (max-width: 768px) {
-        padding: 3rem 2rem;
+        padding: 3rem 5rem 3rem 1rem;
       }
     }
     &:last-child {

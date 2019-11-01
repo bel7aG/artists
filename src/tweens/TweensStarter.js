@@ -27,6 +27,10 @@ export const StarterTweens = () => {
       opacity: 0,
       ease: Power2.easeInOut
     })
+    .to('.layer', 0.6, {
+      display: 'none',
+      ease: Power2.easeInOut
+    })
 
     .to('.block-1, .block-2, .menu', 1, {
       y: 0

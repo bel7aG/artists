@@ -1,10 +1,10 @@
 import { FETCH_ARTISTS } from 'types'
 
-export const fecthArtists = ({ loading, artists, error }) => ({
+export const fecthArtists = ({ loading, payload, error }) => ({
   type: FETCH_ARTISTS,
   payload: {
     loading,
-    artists,
+    payload,
     error
   }
 })

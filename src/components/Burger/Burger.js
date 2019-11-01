@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { openMenuAnimation, closeMenuAnimation } from 'tweens'
 import { SBurger } from './SBurger'
 import { Mask } from 'components'
-import { toggleMenuAction, toggleSearchAction } from 'actions'
 
 const Burger = ({ menu, search, toggleMenuAction, toggleSearchAction }) => {
   const [mask, setMask] = useState(false)
@@ -44,6 +42,7 @@ const Burger = ({ menu, search, toggleMenuAction, toggleSearchAction }) => {
 
 Burger.propTypes = {
   toggleMenuAction: PropTypes.func.isRequired,
+  toggleSearchAction: PropTypes.func.isRequired,
   menu: PropTypes.bool.isRequired,
   search: PropTypes.bool.isRequired
 }
@@ -53,7 +52,4 @@ const mapStateToProps = ({ mechanism: { menu, search } }) => ({
   search
 })
 
-export default connect(
-  mapStateToProps,
-  { toggleMenuAction, toggleSearchAction }
-)(Burger)
+export default Burger

@@ -3,7 +3,6 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import client from 'apollo'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
-
 import { createStore, persistor } from 'store'
 
 export default ({ element }) => {

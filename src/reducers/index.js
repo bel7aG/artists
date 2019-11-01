@@ -8,7 +8,7 @@ import { artists } from './Artists'
 const persistConfig = {
   key: 'root',
   storage,
-  whiteList: ['data']
+  whitelist: ['']
 }
 
 const mechanism = combineReducers({

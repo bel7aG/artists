@@ -1,8 +1,11 @@
 import React from 'react'
+import { Location } from '@reach/router'
+import { Scrollbar } from 'components'
+import { SDetails } from './SDetails'
 
 const Details = () => {
   return (
-    <div>
+    <SDetails className="page-details">
       <h1>bel7aG details</h1>
       <h2>okokokokokokok</h2>
       <h2>okokokokokokok</h2>
@@ -10,7 +13,7 @@ const Details = () => {
       <h2>okokokokokokok</h2>
       <h2>okokokokokokok</h2>
       <h2>okokokokokokok</h2>
-    </div>
+    </SDetails>
   )
 }
 
