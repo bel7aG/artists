@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { SHome } from './SHome'
 import { SearchForm, Results } from 'components'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { fecthArtists } from 'actions'
 import { useInfiniteScroll } from 'hooks'
+import styled from 'styled-components'
+
+export const SHome = styled.div`
+  position: relative;
+`
 
 const Home = ({ fecthArtists, artists }) => {
   const [text, setText] = useState('')

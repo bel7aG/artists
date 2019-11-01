@@ -25,7 +25,7 @@ export const SArtist = styled.div`
       > div {
         height: 100%;
         opacity: 0;
-        transition: all 0.3s 0.42s ease-in-out;
+        transition: all 0.6s 0.42s ease-in-out;
         transform: translateY(10%);
         color: #fff;
 
