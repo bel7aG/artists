@@ -5,7 +5,6 @@ import { SearchForm, Results } from 'components'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { fecthArtists } from 'actions'
-import { useInfiniteScroll } from 'hooks'
 import styled from 'styled-components'
 
 export const SHome = styled.div`
@@ -21,7 +20,12 @@ const Home = ({ fecthArtists, artists }) => {
     setText(searchField)
   }
 
-  const { data, loading, error = null, fetchMore } = useQuery(ARTISTS_APOLLO_QUERY, {
+  const {
+    data: { search } = {},
+    loading = false,
+    error = null,
+    fetchMore
+  } = useQuery(ARTISTS_APOLLO_QUERY, {
     skip: !text || !/^[a-zA-Z]*$/.test(text) || loading,
     variables: {
       query: text
@@ -29,16 +33,73 @@ const Home = ({ fecthArtists, artists }) => {
   })
 
   useEffect(() => {
-    if (data) {
-      console.log(data)
-      const { nodes, pageInfo, totalCount } = data.search.artists
+    if (search) {
+      console.log(search)
+      const { nodes, pageInfo, totalCount } = search.artists
       fecthArtists({ loading, error, payload: { nodes, pageInfo, totalCount } })
     }
   }, [loading])
 
+  const handleLoadMoreArtists = () => {
+    fetchMore({
+      variables: {
+        cursor: search.artists.pageInfo.endCursor
+      },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        const newArtists = fetchMoreResult.search.artists.nodes
+        const pageInfo = fetchMoreResult.search.artists.pageInfo
+        const nodes = [...previousResult.search.artists.nodes, ...newArtists]
+
+        fecthArtists({
+          loading,
+          error,
+          payload: { nodes, pageInfo, totalCount: artists.totalCount }
+        })
+
+        console.log(fetchMoreResult)
+
+        return newArtists.length
+          ? {
+              // Put the new comments at the end of the list and update `pageInfo`
+              // so we have the new `endCursor` and `hasNextPage` values
+              search: {
+                __typename: previousResult.search.__typename,
+                artists: {
+                  __typename: previousResult.search.artists.__typename,
+                  nodes,
+                  pageInfo: {
+                    ...pageInfo,
+                    __typename: previousResult.search.artists.pageInfo.__typename
+                  }
+                }
+              }
+            }
+          : previousResult
+      }
+    })
+  }
+  const {
+    nodes,
+    pageInfo: { hasNextPage }
+  } = artists
+  console.log('hasNextPage')
+  console.log('hasNextPage')
+  console.log('hasNextPage')
+  console.log('hasNextPage')
+  console.log('hasNextPage')
+  console.log('hasNextPage')
+  console.log('hasNextPage')
+  console.log('hasNextPage')
+  console.log('hasNextPage')
+  console.log(hasNextPage)
   return (
     <SHome>
-      <Results data={artists.nodes} scrollbarClassName="scrollbar">
+      <Results
+        handleLoadMoreArtists={handleLoadMoreArtists}
+        data={artists.nodes}
+        hasNextPage={hasNextPage}
+        scrollbarClassName="scrollbar"
+      >
         <SearchForm handleSubmitForm={handleSubmitForm} text={text} />
       </Results>
     </SHome>
@@ -46,9 +107,11 @@ const Home = ({ fecthArtists, artists }) => {
 }
 
 const ARTISTS_APOLLO_QUERY = gql`
-  query Search($query: String!) {
+  query Search($query: String!, $cursor: String) {
     search {
-      artists(query: $query, first: 40) {
+      __typename
+      artists(query: $query, first: 40, after: $cursor) {
+        __typename
         totalCount
         pageInfo {
           hasNextPage
@@ -57,6 +120,7 @@ const ARTISTS_APOLLO_QUERY = gql`
           endCursor
         }
         nodes {
+          __typename
           mediaWikiImages {
             descriptionURL
             url

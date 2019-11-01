@@ -5,9 +5,11 @@ import { SFavorits } from './SFavorits'
 
 const Favorits = ({ data = [] }) => {
   return (
-    <SFavorits className="favorits">
-      <Results data={data} />
-    </SFavorits>
+    data.length && (
+      <SFavorits className="favorits">
+        <Results data={data} />
+      </SFavorits>
+    )
   )
 }
 

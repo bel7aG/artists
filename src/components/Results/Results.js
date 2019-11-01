@@ -2,8 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Artist, Scrollbar } from 'components'
 import { SResults, SResultsList } from './SResults'
+import InfiniteScroll from 'react-infinite-scroller'
 
-const Results = ({ children, data = [], scrollbarClassName = '' }) => {
+const Results = ({
+  children,
+  data = [],
+  hasNextPage,
+  scrollbarClassName = '',
+  handleLoadMoreArtists
+}) => {
   const artists =
     data && data.map((artist, index) => <Artist key={index} artist={artist} />)
   console.log('$$$$$$$$$$$$$$')
@@ -12,7 +19,15 @@ const Results = ({ children, data = [], scrollbarClassName = '' }) => {
     <SResults>
       <Scrollbar className={scrollbarClassName}>
         {children}
-        <SResultsList>{artists}</SResultsList>
+        {artists.length && (
+          <InfiniteScroll
+            loadMore={handleLoadMoreArtists}
+            useWindow={false}
+            hasMore={hasNextPage}
+          >
+            <SResultsList>{artists}</SResultsList>
+          </InfiniteScroll>
+        )}
       </Scrollbar>
     </SResults>
   )
@@ -21,6 +36,8 @@ const Results = ({ children, data = [], scrollbarClassName = '' }) => {
 Results.propTypes = {
   children: PropTypes.node.isRequired,
   data: PropTypes.array.isRequired,
+  handleLoadMoreArtists: PropTypes.func.isRequired,
+  hasNextPage: PropTypes.bool.isRequired,
   scrollbarClassName: PropTypes.string
 }
 
