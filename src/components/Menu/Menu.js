@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { SMenu, SMenuLayer } from './SMenu'
 import { Burger, MenuNavigation, Mask, SearchSVG } from 'components'
 import { openSearchTweens } from 'tweens'
-import { toggleMenuAction, toggleSearchAction } from 'actions'
+import { toggleMenuAction, toggleSearchAction, positionPlayerAction } from 'actions'
 
 const Menu = ({
   children,
@@ -12,9 +12,17 @@ const Menu = ({
   search,
   toggleSearchAction,
   toggleMenuAction,
+  positionPlayerAction,
+  positionPlayer,
   artistsLength
 }) => {
   const [searchSVGMask, setSearchSVGMask] = useState(false)
+
+  useEffect(() => {
+    alert(positionPlayer)
+    if (positionPlayer === 'SLIDER') {
+    }
+  }, [positionPlayer])
 
   const handleSearch = () => {
     toggleSearchAction(true)
@@ -50,6 +58,7 @@ const Menu = ({
         menu={menu}
         toggleSearchAction={toggleSearchAction}
         toggleMenuAction={toggleMenuAction}
+        positionPlayerAction={positionPlayerAction}
       />
       {children}
     </SMenu>
@@ -60,13 +69,15 @@ Menu.propTypes = {
   children: PropTypes.node.isRequired,
   menu: PropTypes.bool.isRequired,
   search: PropTypes.bool.isRequired,
-  artistsLength: PropTypes.number.isRequired,
   toggleMenuAction: PropTypes.func.isRequired,
-  toggleSearchAction: PropTypes.func.isRequired
+  toggleSearchAction: PropTypes.func.isRequired,
+  positionPlayerAction: PropTypes.func.isRequired,
+  positionPlayer: PropTypes.string.isRequired,
+  artistsLength: PropTypes.number.isRequired
 }
 
 const mapStateToProps = ({
-  mechanism: { menu, search },
+  mechanism: { menu, search, positionPlayer },
   data: {
     artists: {
       artists: { nodes: artists }
@@ -75,10 +86,11 @@ const mapStateToProps = ({
 }) => ({
   menu,
   search,
+  positionPlayer,
   artistsLength: artists.length
 })
 
 export default connect(
   mapStateToProps,
-  { toggleSearchAction, toggleMenuAction }
+  { toggleSearchAction, toggleMenuAction, positionPlayerAction }
 )(Menu)

@@ -19,7 +19,8 @@ export const SLoader = styled.div`
   bottom: 0;
   height: 0.4rem;
   width: 100vw;
-  opacity: ${props => (props.opacity ? 1 : 0)};
+  opacity: ${props => (props.showLoader ? 1 : 0)};
+  transition: all 0.3s ease-in;
   background-image: linear-gradient(
     to right,
     #ffe6ae,

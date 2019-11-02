@@ -2,19 +2,19 @@ import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { menu, search, appStarted } from './Mechanism'
-import { artists } from './Artists'
+import { menu, search, positionPlayer } from './Mechanism'
+import { artists, favorits } from './Artists'
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['']
+  whitelist: ['favorits']
 }
 
 const mechanism = combineReducers({
   menu,
   search,
-  appStarted
+  positionPlayer
 })
 
 const data = combineReducers({
@@ -24,7 +24,8 @@ const data = combineReducers({
 const rootReducer = combineReducers({
   mechanism,
   form,
-  data
+  data,
+  favorits
 })
 
 export default persistReducer(persistConfig, rootReducer)

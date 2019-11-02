@@ -17,10 +17,7 @@ export const SResultsList = styled.div`
   > div {
     height: 45rem;
     position: relative;
-    > img {
-      width: 100%;
-      height: auto;
-    }
+
     overflow: hidden;
   }
 

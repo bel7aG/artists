@@ -7,7 +7,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 const Results = ({
   children,
   data = [],
-  hasNextPage,
+  hasNextPage = false,
   scrollbarClassName = '',
   handleLoadMoreArtists
 }) => {
@@ -21,7 +21,7 @@ const Results = ({
         {children}
         {artists.length && (
           <InfiniteScroll
-            loadMore={handleLoadMoreArtists}
+            loadMore={() => handleLoadMoreArtists()}
             useWindow={false}
             hasMore={hasNextPage}
           >
@@ -34,10 +34,10 @@ const Results = ({
 }
 
 Results.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   data: PropTypes.array.isRequired,
-  handleLoadMoreArtists: PropTypes.func.isRequired,
-  hasNextPage: PropTypes.bool.isRequired,
+  handleLoadMoreArtists: PropTypes.func,
+  hasNextPage: PropTypes.bool,
   scrollbarClassName: PropTypes.string
 }
 

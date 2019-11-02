@@ -4,8 +4,13 @@ export const SArtist = styled.div`
   position: relative;
   width: 100%;
   height: auto;
+  > img {
+    width: 100%;
+    height: auto !important;
+  }
   &:hover {
-    > div {
+    > div,
+    img {
       &:nth-child(2) {
         transform: scale(1);
       }
@@ -53,7 +58,6 @@ export const SArtist = styled.div`
         }
 
         > span {
-          opacity: 0.4;
           padding: 1rem 2rem;
         }
 
@@ -80,13 +84,13 @@ export const SArtist = styled.div`
         }
       }
     }
-
-    &:nth-child(2) {
-      transform: scale(1.036);
-      height: 100%;
-      width: 100%;
-      transition: all 0.32s 0.2s ease-out;
-    }
+  }
+  > div:nth-child(2),
+  > img :nth-child(2) {
+    height: 100%;
+    width: 100%;
+    transform: scale(1.036);
+    transition: all 0.32s 0.2s ease-out;
   }
 `
 

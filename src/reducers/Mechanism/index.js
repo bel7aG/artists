@@ -1,5 +1,5 @@
 import menu from './MenuReducer'
 import search from './SearchReducer'
-import appStarted from './AppStartedReducer'
+import positionPlayer from './PositonPlayerReducer'
 
-export { menu, search, appStarted }
+export { menu, search, positionPlayer }

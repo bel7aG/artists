@@ -4,7 +4,12 @@ import { Link } from '@reach/router'
 import { Flex, List, FavoritSVG } from 'components'
 import { handleArtistsTweens, handleHomeTweens } from 'tweens'
 
-const MenuNavigation = ({ menu, toggleMenuAction, toggleSearchAction }) => {
+const MenuNavigation = ({
+  menu,
+  toggleMenuAction,
+  toggleSearchAction,
+  positionPlayerAction
+}) => {
   const handleMenuItem = () => {
     toggleMenuAction(menu)
     toggleSearchAction(false)
@@ -42,6 +47,7 @@ const MenuNavigation = ({ menu, toggleMenuAction, toggleSearchAction }) => {
               onClick={() => {
                 handleMenuItem()
                 handleHomeTweens()
+                positionPlayerAction('SLIDER')
               }}
             >
               <Link to="/">Home</Link>
@@ -49,8 +55,10 @@ const MenuNavigation = ({ menu, toggleMenuAction, toggleSearchAction }) => {
             <h1
               className="artists-favorit"
               onClick={() => {
+                alert('^^^^')
                 handleMenuItem()
                 handleArtistsTweens()
+                positionPlayerAction('FAVORITS')
               }}
             >
               Artists

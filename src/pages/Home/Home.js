@@ -55,44 +55,47 @@ const Home = ({ fecthArtists, artists }) => {
   }, [search])
 
   const handleLoadMoreArtists = () => {
-    fetchMore({
-      variables: {
-        cursor: search.artists.pageInfo.endCursor
-      },
-      notifyOnNetworkStatusChange: true,
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        const newArtists = fetchMoreResult.search.artists.nodes
-        const pageInfo = fetchMoreResult.search.artists.pageInfo
-        const nodes = [...previousResult.search.artists.nodes, ...newArtists]
-        console.log('^^^^^^^^')
-        console.log(previousResult)
-        console.log(fetchMoreResult)
-        console.log('^^^^^^^^')
-        setIsTypingNewSearch(false)
+    alert(search)
+    if (search) {
+      fetchMore({
+        variables: {
+          cursor: search.artists.pageInfo.endCursor
+        },
+        notifyOnNetworkStatusChange: true,
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          const newArtists = fetchMoreResult.search.artists.nodes
+          const pageInfo = fetchMoreResult.search.artists.pageInfo
+          const nodes = [...previousResult.search.artists.nodes, ...newArtists]
+          console.log('^^^^^^^^')
+          console.log(previousResult)
+          console.log(fetchMoreResult)
+          console.log('^^^^^^^^')
+          setIsTypingNewSearch(false)
 
-        fecthArtists({
-          loading,
-          error,
-          payload: { nodes, pageInfo, totalCount: artists.totalCount }
-        })
+          fecthArtists({
+            loading,
+            error,
+            payload: { nodes, pageInfo, totalCount: artists.totalCount }
+          })
 
-        return newArtists.length
-          ? {
-              search: {
-                __typename: previousResult.search.__typename,
-                artists: {
-                  __typename: previousResult.search.artists.__typename,
-                  nodes,
-                  pageInfo: {
-                    ...pageInfo,
-                    __typename: previousResult.search.artists.pageInfo.__typename
+          return newArtists.length
+            ? {
+                search: {
+                  __typename: previousResult.search.__typename,
+                  artists: {
+                    __typename: previousResult.search.artists.__typename,
+                    nodes,
+                    pageInfo: {
+                      ...pageInfo,
+                      __typename: previousResult.search.artists.pageInfo.__typename
+                    }
                   }
                 }
               }
-            }
-          : previousResult
-      }
-    })
+            : previousResult
+        }
+      })
+    }
   }
   const {
     nodes,
@@ -102,7 +105,7 @@ const Home = ({ fecthArtists, artists }) => {
   return (
     <SHome>
       <Results
-        handleLoadMoreArtists={handleLoadMoreArtists}
+        handleLoadMoreArtists={() => handleLoadMoreArtists()}
         data={nodes}
         hasNextPage={hasNextPage}
         scrollbarClassName="scrollbar"
@@ -168,7 +171,7 @@ const ARTISTS_APOLLO_QUERY = gql`
 
 Home.propTypes = {
   fecthArtists: PropTypes.func.isRequired,
-  artists: PropTypes.array.isRequired
+  artists: PropTypes.object.isRequired
 }
 
 const mapStateToProps = ({

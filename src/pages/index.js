@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { Router, Location, Redirect } from '@reach/router'
+import React from 'react'
+import { Router, Location } from '@reach/router'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+
+import Layout from 'components'
 
 import Home from './Home'
 import Details from './Details'
-import Layout from 'components'
 import NotFound from './404'
+
 import './main.scss'
 
 const App = () => {
@@ -28,13 +31,18 @@ const App = () => {
 const FadeTransitionRouter = props => (
   <Location>
     {({ location }) => {
-      console.log(location)
       const { pathname } = location
       if (pathname === '/' || pathname === '/details') {
       } else {
       }
 
-      return <Router>{props.children}</Router>
+      return (
+        <TransitionGroup className="transition-group">
+          <CSSTransition key={location.key} classNames="fade" timeout={500}>
+            <Router>{props.children}</Router>
+          </CSSTransition>
+        </TransitionGroup>
+      )
     }}
   </Location>
 )

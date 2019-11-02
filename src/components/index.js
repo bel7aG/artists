@@ -19,6 +19,7 @@ import Artist from './Artist'
 import Favorits from './Favorits'
 import Image from './image'
 import Loader from './Loader'
+import Empty from './Empty'
 
 export * from './SVG'
 
@@ -43,5 +44,6 @@ export {
   Artist,
   Favorits,
   Image,
-  Loader
+  Loader,
+  Empty
 }

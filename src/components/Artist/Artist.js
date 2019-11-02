@@ -1,10 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import Rating from 'react-rating'
+import { addFavorit } from 'actions'
+
 import { SArtist, SButton } from './SArtist'
 import { Image } from 'components'
-import Rating from 'react-rating'
 
-const Results = ({ artist = {} }) => {
+const Results = ({ artist = {}, addFavorit }) => {
   const {
     name,
     country,
@@ -13,9 +16,13 @@ const Results = ({ artist = {} }) => {
     mediaWikiImages
   } = artist
 
+  const handleFavorit = () => {
+    addFavorit(artist)
+  }
+
   return (
     <SArtist>
-      <div>
+      <div onClick={handleFavorit}>
         <div>
           <h1>{name}</h1>
           <h2>{country}</h2>
@@ -32,7 +39,11 @@ const Results = ({ artist = {} }) => {
 }
 
 Results.propTypes = {
-  artist: PropTypes.object.isRequired
+  artist: PropTypes.object.isRequired,
+  addFavorit: PropTypes.func.isRequired
 }
 
-export default Results
+export default connect(
+  null,
+  { addFavorit }
+)(Results)

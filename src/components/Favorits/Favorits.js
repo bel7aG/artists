@@ -1,20 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Results } from 'components'
+import { Results, Empty } from 'components'
 import { SFavorits } from './SFavorits'
+import { connect } from 'react-redux'
 
-const Favorits = ({ data = [] }) => {
-  return (
-    data.length && (
+const Favorits = ({ favorits }) => {
+  if (favorits.length) {
+    return (
       <SFavorits className="favorits">
-        <Results data={data} />
+        <Results isFavorits={true} data={favorits} />
       </SFavorits>
     )
-  )
+  }
+
+  return <Empty message="You dont have favorits GOOO Boom one." />
 }
 
 Favorits.propTypes = {
-  data: PropTypes.array.isRequired
+  favorits: PropTypes.array.isRequired
 }
 
-export default Favorits
+const mapStateToProps = ({ favorits }) => ({
+  favorits
+})
+
+export default connect(mapStateToProps)(Favorits)
