@@ -33,8 +33,6 @@ const Home = ({ fecthArtists, artists }) => {
   const handleSubmitForm = ({ searchField }) => {
     setText(searchField)
     setIsTypingNewSearch(true)
-
-    setTimeout(() => {}, 0)
   }
 
   useEffect(() => {
@@ -97,7 +95,7 @@ const Home = ({ fecthArtists, artists }) => {
   } = artists
 
   return (
-    <SHome>
+    <SHome className="home">
       <Results
         handleLoadMoreArtists={() => handleLoadMoreArtists()}
         data={nodes}

@@ -13,8 +13,7 @@ const Results = ({
 }) => {
   const artists =
     data && data.map((artist, index) => <Artist key={index} artist={artist} />)
-  console.log('$$$$$$$$$$$$$$')
-  console.log(artists)
+
   return (
     <SResults>
       <Scrollbar className={scrollbarClassName}>

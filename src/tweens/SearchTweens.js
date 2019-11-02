@@ -37,15 +37,31 @@ export const openSearchTweens = artistsLength => {
 }
 
 export const showTween = (className, duration) => {
-  TweenMax.to(className, duration, {
-    opacity: 1,
-    ease: Power2.easeInOut
-  })
+  TweenMax.fromTo(
+    className,
+    duration,
+    {
+      opacity: 0,
+      ease: Power2.easeInOut
+    },
+    {
+      opacity: 1,
+      ease: Power2.easeInOut
+    }
+  )
 }
 
 export const hideTween = (className, duration) => {
-  TweenMax.to(className, duration, {
-    opacity: 0,
-    ease: Power2.easeInOut
-  })
+  TweenMax.fromTo(
+    className,
+    duration,
+    {
+      opacity: 1,
+      ease: Power2.easeInOut
+    },
+    {
+      opacity: 0,
+      ease: Power2.easeInOut
+    }
+  )
 }

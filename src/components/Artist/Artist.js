@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Rating from 'react-rating'
-import { addFavorit, deleteFavorit, selectArtist } from 'actions'
 import { Link } from '@reach/router'
-import { openSearchTweens } from 'tweens'
+import { addFavorit, deleteFavorit, selectArtist } from 'actions'
+import { openSearchTweens, showTween } from 'tweens'
+import { Image, FavoritSVG } from 'components'
+import { termCoolForLink } from 'helpers'
 
 import { SArtist, SButton } from './SArtist'
-import { Image, FavoritSVG } from 'components'
 
 const Results = ({
   artist = {},
@@ -24,6 +25,10 @@ const Results = ({
     type,
     mediaWikiImages
   } = artist
+
+  useEffect(() => {
+    showTween('.home', 1.2)
+  }, [])
 
   const handleAddFavorit = () => {
     selectArtist(artist)
@@ -54,7 +59,10 @@ const Results = ({
             <h1>{type}</h1>
           </div>
           <SButton positionPlayer={isFavorits}>
-            <Link onClick={handleArtistButton} to={`/artist/${name}/details`}>
+            <Link
+              onClick={handleArtistButton}
+              to={`/artist/${termCoolForLink(name)}/details`}
+            >
               Details
             </Link>
           </SButton>

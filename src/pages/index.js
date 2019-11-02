@@ -37,8 +37,8 @@ const FadeTransitionRouter = props => (
       }
 
       return (
-        <TransitionGroup className="transition-group">
-          <CSSTransition key={location.key} classNames="fade" timeout={500}>
+        <TransitionGroup>
+          <CSSTransition key={location.key} timeout={500}>
             <Router>{props.children}</Router>
           </CSSTransition>
         </TransitionGroup>

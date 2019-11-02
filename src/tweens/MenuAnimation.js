@@ -5,6 +5,7 @@ export const openMenuAnimation = whenSearchOpenGoFast => {
   menuAnimation
     .to('.scrollbar', whenSearchOpenGoFast ? 0.4 : 0, {
       opacity: 0,
+      display: 'block',
       ease: Power2.linear
     })
     .to('.search-svg', 0.3, {
@@ -69,6 +70,7 @@ export const openMenuAnimation = whenSearchOpenGoFast => {
 export const closeMenuAnimation = isHome => {
   TweenMax.to('.scrollbar', 0, {
     opacity: 0,
+    display: 'none',
     ease: Power2.easeNone
   })
   TweenMax.to('.block-1', 0, {

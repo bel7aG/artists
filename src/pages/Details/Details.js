@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Redirect } from '@reach/router'
+import { navigate, Redirect } from '@reach/router'
 import { Scrollbar } from 'components'
+import { showTween, hideTween } from 'tweens'
 
 const SDetails = styled.div`
   position: absolute;
@@ -13,8 +14,11 @@ const SDetails = styled.div`
   min-height: 100vh;
   max-height: 100vh;
   overflow: hidden;
-  > div {
-    height: 100vh;
+  a {
+    color: #fff;
+  }
+  > :nth-child(2) {
+    height: 100vh !important;
   }
   * {
     color: #fff;
@@ -22,12 +26,26 @@ const SDetails = styled.div`
 `
 
 const Details = ({ pickedArtist }) => {
+  useEffect(() => {
+    showTween('.page-details', 1)
+    return () => {
+      hideTween('.search-svg', 0.8)
+    }
+  }, [])
   if (pickedArtist === null) {
     return <Redirect noThrow to="/" />
   }
 
+  const handleBackHome = () => {
+    hideTween('.page-details', 1)
+    setTimeout(() => {
+      navigate('/')
+    }, 1000)
+  }
+
   return (
     <SDetails className="page-details">
+      <div onClick={handleBackHome}>Home</div>
       <Scrollbar>
         <h1>bel7aG details</h1>
         <h2>okokokokokokok</h2>
