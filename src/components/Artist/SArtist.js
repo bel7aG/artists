@@ -20,12 +20,15 @@ export const SArtist = styled.div`
       width: 100%;
       height: 100%;
       transition: all 0.3s ease-in;
-      cursor: pointer;
+      cursor: default;
 
       > div {
+        > *:not(:last-child) {
+          opacity: 0;
+          transition: opacity 0.59s 0.68s ease-out;
+        }
         height: 100%;
-        opacity: 0;
-        transition: all 0.49s 0.38s ease-out;
+        transition: all 0.29s 0.38s ease-out;
         transform: translateY(10%);
         color: #fff;
 
@@ -69,6 +72,9 @@ export const SArtist = styled.div`
       &:hover {
         background-color: rgba(18, 0, 64, 0.6);
         > div {
+          > *:not(:last-child) {
+            opacity: 1;
+          }
           opacity: 1;
           transform: translateY(0);
         }
@@ -96,7 +102,12 @@ export const SButton = styled.button`
   color: #fff;
   font-family: BebasNeue-Bold;
   font-size: 2.3rem;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
 
   cursor: pointer;
+  transition: letter-spacing 0.3s, color 0.2s 0.3s linear;
+  &:hover {
+    letter-spacing: 6px;
+    color: #eb1241;
+  }
 `
