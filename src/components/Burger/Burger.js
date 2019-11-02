@@ -4,7 +4,13 @@ import { openMenuAnimation, closeMenuAnimation } from 'tweens'
 import { SBurger } from './SBurger'
 import { Mask } from 'components'
 
-const Burger = ({ menu, search, toggleMenuAction, toggleSearchAction }) => {
+const Burger = ({
+  menu,
+  search,
+  toggleMenuAction,
+  toggleSearchAction,
+  pathname
+}) => {
   const [mask, setMask] = useState(false)
 
   useEffect(() => {
@@ -22,7 +28,7 @@ const Burger = ({ menu, search, toggleMenuAction, toggleSearchAction }) => {
 
     if (menu) {
       toggleSearchAction(false)
-      closeMenuAnimation()
+      closeMenuAnimation(pathname !== '/' || pathname === undefined)
     } else {
       openMenuAnimation(search)
     }
@@ -44,12 +50,8 @@ Burger.propTypes = {
   toggleMenuAction: PropTypes.func.isRequired,
   toggleSearchAction: PropTypes.func.isRequired,
   menu: PropTypes.bool.isRequired,
-  search: PropTypes.bool.isRequired
+  search: PropTypes.bool.isRequired,
+  pathname: PropTypes.string.isRequired
 }
-
-const mapStateToProps = ({ mechanism: { menu, search } }) => ({
-  menu,
-  search
-})
 
 export default Burger

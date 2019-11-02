@@ -55,9 +55,8 @@ const Results = ({
           </div>
           <SButton positionPlayer={isFavorits}>
             <Link onClick={handleArtistButton} to={`/artist/${name}/details`}>
-              {' '}
               Details
-            </Link>{' '}
+            </Link>
           </SButton>
         </div>
       </div>

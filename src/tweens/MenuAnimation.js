@@ -66,7 +66,7 @@ export const openMenuAnimation = whenSearchOpenGoFast => {
   return menuAnimation
 }
 
-export const closeMenuAnimation = () => {
+export const closeMenuAnimation = isHome => {
   TweenMax.to('.scrollbar', 0, {
     opacity: 0,
     ease: Power2.easeNone
@@ -75,6 +75,7 @@ export const closeMenuAnimation = () => {
     width: '5%',
     ease: Power2.easeInOut
   })
+  alert(isHome)
   const menuAnimation = new TimelineLite()
   menuAnimation
     .to('.menu-items-wrapper', 0.8, {
@@ -87,7 +88,7 @@ export const closeMenuAnimation = () => {
       ease: Power2.easeInOut
     })
     .to('.menu', 0.9, {
-      width: 60,
+      width: isHome ? '100%' : 60,
       ease: Power2.easeInOut
     })
     .to('.menu-layer', 0.7, {

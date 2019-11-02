@@ -39,6 +39,7 @@ const Menu = ({
   return (
     <SMenu className="menu">
       <Burger
+        pathname={pathname}
         menu={menu}
         search={search}
         toggleMenuAction={toggleMenuAction}
