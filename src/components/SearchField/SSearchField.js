@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 
 export const SSearchField = styled.input`
-  font-family: BebasNeue-Bold !important;
   font-size: 2rem;
   box-sizing: border-box;
   min-width: 24rem;
@@ -13,7 +12,6 @@ export const SSearchField = styled.input`
   border-bottom: 1px solid #fff;
   background: none;
   font-weight: 400;
-  font-family: Roboto;
   outline: 0;
   line-height: 1rem;
   transition: color 0.4s linear;

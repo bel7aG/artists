@@ -10,7 +10,6 @@ export const SEmpty = styled.div`
   flex-direction: column;
   > p {
     color: #fff;
-    font-family: BebasNeue-Bold, sans-serif;
     font-size: 2.3rem;
   }
 `

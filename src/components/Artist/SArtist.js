@@ -125,7 +125,6 @@ export const SButton = styled.button`
 
   background-color: ${props => (props.positionPlayer ? '#fff' : '#0f0f0f')};
   color: ${props => (props.positionPlayer ? '#0f0f0f' : '#fff')};
-  font-family: BebasNeue-Bold;
   font-size: 2.3rem;
   letter-spacing: 4px;
 

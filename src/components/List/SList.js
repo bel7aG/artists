@@ -13,7 +13,6 @@ export const SList = styled.ul`
   &.menu-items__right {
     /* for menu */
     h1 {
-      font-family: BebasNeue-Bold;
       line-height: 10rem;
       letter-spacing: -4px;
       font-size: 12.5rem;
@@ -31,7 +30,6 @@ export const SList = styled.ul`
       font-weight: 700;
       font-size: 2rem;
       line-height: 3rem;
-      font-family: BebasNeue-Bold;
       &::before {
         content: '';
         position: absolute;
