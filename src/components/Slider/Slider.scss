@@ -84,7 +84,7 @@ button:focus {
 }
 
 .blocks {
-  .block-1,
+  > .block-1,
   .block-3 {
     &__white {
       background-color: #fff;
@@ -95,17 +95,13 @@ button:focus {
       height: 0;
     }
   }
-
-  .block-2 {
+  .block-1 {
+    z-index: 12;
+    position: fixed;
+    height: 100vh;
+    width: 5%;
+    background: #0f0f0f;
   }
-}
-
-.block-1 {
-  z-index: 12;
-  position: fixed;
-  height: 100vh;
-  width: 5%;
-  background: #0f0f0f;
 }
 
 .block-2 {
@@ -165,7 +161,7 @@ button:focus {
   }
 
   .block-1 {
-    width: 50%;
+    width: 50% !important;
   }
 
   .slide-slick {
@@ -177,14 +173,12 @@ button:focus {
   }
 
   .text-slider-wrapper {
+    z-index: 14;
     position: absolute;
     top: 50% !important;
   }
 
   .slider-control {
     left: 22.5%;
-  }
-
-  .menu-burger {
   }
 }

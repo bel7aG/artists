@@ -1,3 +1,7 @@
+* {
+  user-select: none;
+}
+
 a,
 a:active,
 a:visited,
@@ -12,6 +16,7 @@ a:visited,
 }
 
 * {
+  font-family: BebasNeue-Bold, sans-serif !important;
   overflow: hidden;
   margin: 0;
   padding: 0;

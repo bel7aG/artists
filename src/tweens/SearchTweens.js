@@ -41,8 +41,7 @@ export const showTween = (className, duration) => {
     className,
     duration,
     {
-      opacity: 0,
-      ease: Power2.easeInOut
+      opacity: 0
     },
     {
       opacity: 1,
@@ -56,8 +55,7 @@ export const hideTween = (className, duration) => {
     className,
     duration,
     {
-      opacity: 1,
-      ease: Power2.easeInOut
+      opacity: 1
     },
     {
       opacity: 0,

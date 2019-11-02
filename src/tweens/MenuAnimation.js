@@ -53,12 +53,12 @@ export const openMenuAnimation = whenSearchOpenGoFast => {
       {
         opacity: 0,
         y: 100,
-        delay: whenSearchOpenGoFast ? -2 : -0.7,
+        delay: whenSearchOpenGoFast ? -1.3 : -0.7,
         display: 'none'
       },
       {
         opacity: 1,
-        delay: whenSearchOpenGoFast ? -2 : -0.7,
+        delay: whenSearchOpenGoFast ? -1.3 : -0.7,
         y: 0,
         display: 'block',
         ease: Power2.easeInOut
@@ -77,7 +77,6 @@ export const closeMenuAnimation = isHome => {
     width: '5%',
     ease: Power2.easeInOut
   })
-  alert(isHome)
   const menuAnimation = new TimelineLite()
   menuAnimation
     .to('.menu-items-wrapper', 0.8, {

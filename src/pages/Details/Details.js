@@ -29,7 +29,7 @@ const Details = ({ pickedArtist }) => {
   useEffect(() => {
     showTween('.page-details', 1)
     return () => {
-      hideTween('.search-svg', 0.8)
+      hideTween('.search-svg', 0.4)
     }
   }, [])
   if (pickedArtist === null) {
@@ -46,7 +46,7 @@ const Details = ({ pickedArtist }) => {
   return (
     <SDetails className="page-details">
       <div onClick={handleBackHome}>Home</div>
-      <Scrollbar>
+      <Scrollbar className="scrollbar">
         <h1>bel7aG details</h1>
         <h2>okokokokokokok</h2>
         <h2>okokokokokokok</h2>

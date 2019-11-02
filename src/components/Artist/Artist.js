@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Rating from 'react-rating'
 import { Link } from '@reach/router'
 import { addFavorit, deleteFavorit, selectArtist } from 'actions'
-import { openSearchTweens, showTween } from 'tweens'
+import { openSearchTweens } from 'tweens'
 import { Image, FavoritSVG } from 'components'
 import { termCoolForLink } from 'helpers'
 
@@ -25,10 +25,6 @@ const Results = ({
     type,
     mediaWikiImages
   } = artist
-
-  useEffect(() => {
-    showTween('.home', 1.2)
-  }, [])
 
   const handleAddFavorit = () => {
     selectArtist(artist)

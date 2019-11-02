@@ -36,6 +36,10 @@ const Home = ({ fecthArtists, artists }) => {
   }
 
   useEffect(() => {
+    showTween('.home', 2.1)
+  }, [])
+
+  useEffect(() => {
     if (search) {
       const { nodes, pageInfo, totalCount } = search.artists
       if (nodes.length) {
