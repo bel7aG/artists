@@ -54,13 +54,15 @@ export const SArtist = styled.div`
           padding: 1rem 2rem;
         }
 
-        > div > h1 {
+        > div {
           position: absolute;
           right: 0;
           top: 0;
           padding: 1rem 2rem;
-          color: #a8a8a8;
-          text-transform: uppercase;
+          > h1 {
+            color: #a8a8a8;
+            text-transform: uppercase;
+          }
         }
       }
 
@@ -85,6 +87,7 @@ export const SArtist = styled.div`
 export const SButton = styled.button`
   position: absolute;
   bottom: 0;
+  left: 0;
 
   height: 4rem;
   width: 100%;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { SearchForm, Results } from 'components'
+import { SearchForm, Results, Loader } from 'components'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { fecthArtists } from 'actions'
@@ -13,18 +13,15 @@ export const SHome = styled.div`
 
 const Home = ({ fecthArtists, artists }) => {
   const [text, setText] = useState('')
-  console.log(artists)
-
-  const handleSubmitForm = ({ searchField }) => {
-    alert(searchField)
-    setText(searchField)
-  }
+  const [isTypingNewSearch, setIsTypingNewSearch] = useState(false)
 
   const {
     data: { search } = {},
     loading = false,
     error = null,
-    fetchMore
+    fetchMore,
+
+    networkStatus
   } = useQuery(ARTISTS_APOLLO_QUERY, {
     skip: !text || !/^[a-zA-Z]*$/.test(text) || loading,
     variables: {
@@ -32,23 +29,40 @@ const Home = ({ fecthArtists, artists }) => {
     }
   })
 
+  const handleSubmitForm = ({ searchField }) => {
+    setText(searchField)
+    setIsTypingNewSearch(true)
+
+    setTimeout(() => {}, 0)
+  }
+
   useEffect(() => {
     if (search) {
-      console.log(search)
       const { nodes, pageInfo, totalCount } = search.artists
-      fecthArtists({ loading, error, payload: { nodes, pageInfo, totalCount } })
+      if (isTypingNewSearch) {
+        console.log('okokokok')
+        console.log(nodes)
+        setIsTypingNewSearch(false)
+        fecthArtists({ loading, error, payload: { nodes, pageInfo, totalCount } })
+      }
     }
-  }, [loading])
+  }, [search])
 
   const handleLoadMoreArtists = () => {
     fetchMore({
       variables: {
         cursor: search.artists.pageInfo.endCursor
       },
+      notifyOnNetworkStatusChange: true,
       updateQuery: (previousResult, { fetchMoreResult }) => {
         const newArtists = fetchMoreResult.search.artists.nodes
         const pageInfo = fetchMoreResult.search.artists.pageInfo
         const nodes = [...previousResult.search.artists.nodes, ...newArtists]
+        console.log('^^^^^^^^')
+        console.log(previousResult)
+        console.log(fetchMoreResult)
+        console.log('^^^^^^^^')
+        setIsTypingNewSearch(false)
 
         fecthArtists({
           loading,
@@ -56,12 +70,8 @@ const Home = ({ fecthArtists, artists }) => {
           payload: { nodes, pageInfo, totalCount: artists.totalCount }
         })
 
-        console.log(fetchMoreResult)
-
         return newArtists.length
           ? {
-              // Put the new comments at the end of the list and update `pageInfo`
-              // so we have the new `endCursor` and `hasNextPage` values
               search: {
                 __typename: previousResult.search.__typename,
                 artists: {
@@ -82,26 +92,22 @@ const Home = ({ fecthArtists, artists }) => {
     nodes,
     pageInfo: { hasNextPage }
   } = artists
-  console.log('hasNextPage')
-  console.log('hasNextPage')
-  console.log('hasNextPage')
-  console.log('hasNextPage')
-  console.log('hasNextPage')
-  console.log('hasNextPage')
-  console.log('hasNextPage')
-  console.log('hasNextPage')
-  console.log('hasNextPage')
-  console.log(hasNextPage)
+
   return (
     <SHome>
       <Results
         handleLoadMoreArtists={handleLoadMoreArtists}
-        data={artists.nodes}
+        data={nodes}
         hasNextPage={hasNextPage}
         scrollbarClassName="scrollbar"
       >
-        <SearchForm handleSubmitForm={handleSubmitForm} text={text} />
+        <SearchForm
+          disabled={loading}
+          handleSubmitForm={handleSubmitForm}
+          text={text}
+        />
       </Results>
+      <Loader load={loading} />
     </SHome>
   )
 }

@@ -10,9 +10,6 @@ const SVGIcon = props => (
   </svg>
 )
 const Results = ({ artist = {} }) => {
-  console.log('xxxxxxxxxxxxxxxxxxx')
-  console.log(artist)
-
   const {
     name,
     country,
@@ -21,18 +18,19 @@ const Results = ({ artist = {} }) => {
     mediaWikiImages
   } = artist
 
+  const SVGIcon = props => (
+    <svg className={props.className} pointerEvents="none">
+      <use xlinkHref={props.href} />
+    </svg>
+  )
+
   return (
     <SArtist>
       <div>
         <div>
           <h1>{name}</h1>
           <h2>{country}</h2>
-          <Rating
-            emptySymbol={<SVGIcon href="#icon-star-empty" className="icon" />}
-            fullSymbol={<SVGIcon href="#icon-star-full" className="icon" />}
-            initialRating={ratingValue}
-            readonly
-          />
+          <Rating initialRating={ratingValue} readonly />
           <div>
             <h1>{type}</h1>
           </div>

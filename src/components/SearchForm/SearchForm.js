@@ -9,10 +9,11 @@ import gql from 'graphql-tag'
 import { fecthArtists } from 'actions'
 import { load, unload } from 'tweens'
 
-const SearchForm = ({ handleSubmit, handleSubmitForm, text }) => {
+const SearchForm = ({ handleSubmit, handleSubmitForm, text, disabled }) => {
   return (
     <SSearchForm onSubmit={handleSubmit(handleSubmitForm)}>
       <Field
+        disabled={disabled}
         name="searchField"
         type="text"
         value={text}
@@ -26,7 +27,8 @@ const SearchForm = ({ handleSubmit, handleSubmitForm, text }) => {
 SearchForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleSubmitForm: PropTypes.func.isRequired,
-  fecthArtists: PropTypes.func.isRequired
+  fecthArtists: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired
 }
 
 export default connect(

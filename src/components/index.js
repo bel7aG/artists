@@ -18,6 +18,7 @@ import Results from './Results'
 import Artist from './Artist'
 import Favorits from './Favorits'
 import Image from './image'
+import Loader from './Loader'
 
 export * from './SVG'
 
@@ -41,5 +42,6 @@ export {
   Results,
   Artist,
   Favorits,
-  Image
+  Image,
+  Loader
 }
