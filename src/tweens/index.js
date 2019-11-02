@@ -5,7 +5,7 @@ import {
   handleArtistsTweens,
   handleHomeTweens
 } from './MenuAnimation'
-import { openSearchTweens, load, unload } from './SearchTweens'
+import { openSearchTweens, showTween, hideTween } from './SearchTweens'
 
 export {
   StarterTweens,
@@ -14,6 +14,6 @@ export {
   handleArtistsTweens,
   openSearchTweens,
   handleHomeTweens,
-  load,
-  unload
+  showTween,
+  hideTween
 }

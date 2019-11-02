@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { fecthArtists } from 'actions'
 import styled from 'styled-components'
+import { showTween, hideTween } from 'tweens'
 
 export const SHome = styled.div`
   position: relative;
@@ -39,6 +40,11 @@ const Home = ({ fecthArtists, artists }) => {
   useEffect(() => {
     if (search) {
       const { nodes, pageInfo, totalCount } = search.artists
+      if (nodes.length) {
+        hideTween('.search-svg', 0.8)
+      } else {
+        showTween('.search-svg', 0.8)
+      }
       if (isTypingNewSearch) {
         console.log('okokokok')
         console.log(nodes)

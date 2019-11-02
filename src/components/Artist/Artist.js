@@ -3,12 +3,7 @@ import PropTypes from 'prop-types'
 import { SArtist, SButton } from './SArtist'
 import { Image } from 'components'
 import Rating from 'react-rating'
-import { FavoritSVG } from 'components'
-const SVGIcon = props => (
-  <svg className={props.className} pointerEvents="none">
-    <use xlinkHref={props.href} />
-  </svg>
-)
+
 const Results = ({ artist = {} }) => {
   const {
     name,
@@ -17,12 +12,6 @@ const Results = ({ artist = {} }) => {
     type,
     mediaWikiImages
   } = artist
-
-  const SVGIcon = props => (
-    <svg className={props.className} pointerEvents="none">
-      <use xlinkHref={props.href} />
-    </svg>
-  )
 
   return (
     <SArtist>

@@ -6,12 +6,19 @@ import { Burger, MenuNavigation, Mask, SearchSVG } from 'components'
 import { openSearchTweens } from 'tweens'
 import { toggleMenuAction, toggleSearchAction } from 'actions'
 
-const Menu = ({ children, menu, search, toggleSearchAction, toggleMenuAction }) => {
+const Menu = ({
+  children,
+  menu,
+  search,
+  toggleSearchAction,
+  toggleMenuAction,
+  artistsLength
+}) => {
   const [searchSVGMask, setSearchSVGMask] = useState(false)
 
   const handleSearch = () => {
     toggleSearchAction(true)
-    openSearchTweens(search)
+    openSearchTweens(artistsLength)
   }
 
   useEffect(() => {
@@ -53,13 +60,22 @@ Menu.propTypes = {
   children: PropTypes.node.isRequired,
   menu: PropTypes.bool.isRequired,
   search: PropTypes.bool.isRequired,
+  artistsLength: PropTypes.number.isRequired,
   toggleMenuAction: PropTypes.func.isRequired,
   toggleSearchAction: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ mechanism: { menu, search } }) => ({
+const mapStateToProps = ({
+  mechanism: { menu, search },
+  data: {
+    artists: {
+      artists: { nodes: artists }
+    }
+  }
+}) => ({
   menu,
-  search
+  search,
+  artistsLength: artists.length
 })
 
 export default connect(

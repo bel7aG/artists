@@ -25,7 +25,7 @@ export const SArtist = styled.div`
       > div {
         height: 100%;
         opacity: 0;
-        transition: all 0.6s 0.42s ease-in-out;
+        transition: all 0.49s 0.38s ease-out;
         transform: translateY(10%);
         color: #fff;
 
@@ -91,8 +91,9 @@ export const SButton = styled.button`
 
   height: 4rem;
   width: 100%;
-  background-color: #fff;
 
+  background-color: #0f0f0f;
+  color: #fff;
   font-family: BebasNeue-Bold;
   font-size: 2.3rem;
   letter-spacing: 6px;
