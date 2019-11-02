@@ -158,6 +158,10 @@ export const handleArtistsTweens = () => {
       display: 'none',
       delay: -1.2
     })
+  // .fromTo('.empty', 1, {
+  //   display: 'none',
+  //   delay: -1.2
+  // })
 }
 
 export const handleHomeTweens = () => {

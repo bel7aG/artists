@@ -27,17 +27,19 @@ export const StarterTweens = () => {
       opacity: 0,
       ease: Power2.easeInOut
     })
-    .to('.layer', 0.6, {
+    .to('.layer', 0, {
       display: 'none',
       ease: Power2.easeInOut
     })
 
-    .to('.block-1, .block-2, .menu', 1, {
-      y: 0
-    })
     .to('.image-slider ', 2, {
       y: 0,
       delay: -1.4,
+      ease: Power2.easeInOut
+    })
+
+    .to('.text-slide', 0.6, {
+      opacity: 1,
       ease: Power2.easeInOut
     })
     .to('.overlay ', 1, {

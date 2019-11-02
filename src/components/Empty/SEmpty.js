@@ -9,6 +9,7 @@ export const SEmpty = styled.div`
   align-items: center;
   flex-direction: column;
   > p {
+    color: #fff;
     font-family: BebasNeue-Bold, sans-serif;
     font-size: 2.3rem;
   }

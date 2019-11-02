@@ -7,7 +7,7 @@ export const SLayer = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: ${props => props.backgroundColor};
-  z-index: 10;
+  z-index: 100000;
 
   &::before,
   &::after {

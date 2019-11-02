@@ -46,8 +46,6 @@ const Home = ({ fecthArtists, artists }) => {
         showTween('.search-svg', 0.8)
       }
       if (isTypingNewSearch) {
-        console.log('okokokok')
-        console.log(nodes)
         setIsTypingNewSearch(false)
         fecthArtists({ loading, error, payload: { nodes, pageInfo, totalCount } })
       }
@@ -55,7 +53,6 @@ const Home = ({ fecthArtists, artists }) => {
   }, [search])
 
   const handleLoadMoreArtists = () => {
-    alert(search)
     if (search) {
       fetchMore({
         variables: {
@@ -66,10 +63,7 @@ const Home = ({ fecthArtists, artists }) => {
           const newArtists = fetchMoreResult.search.artists.nodes
           const pageInfo = fetchMoreResult.search.artists.pageInfo
           const nodes = [...previousResult.search.artists.nodes, ...newArtists]
-          console.log('^^^^^^^^')
-          console.log(previousResult)
-          console.log(fetchMoreResult)
-          console.log('^^^^^^^^')
+
           setIsTypingNewSearch(false)
 
           fecthArtists({

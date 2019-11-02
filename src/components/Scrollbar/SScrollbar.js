@@ -20,7 +20,7 @@ export const SScrollbar = styled(Scrollbars)`
       max-height: 71%;
       min-height: 20rem;
       > div {
-        background-color: #fff !important;
+        background-color: #eee !important;
         width: 2px !important;
         perspective: 90000;
         border-radius: 0 !important;

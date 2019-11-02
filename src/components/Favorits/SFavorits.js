@@ -9,5 +9,4 @@ export const SFavorits = styled.div`
   max-height: 100vh;
   overflow: hidden;
   width: calc(100vw - 6rem);
-  background-color: #fff;
 `

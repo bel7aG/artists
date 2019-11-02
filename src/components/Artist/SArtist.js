@@ -15,8 +15,29 @@ export const SArtist = styled.div`
         transform: scale(1);
       }
     }
+
+    > div {
+      svg {
+        opacity: 1;
+      }
+    }
   }
   > div {
+    > svg {
+      position: absolute;
+      width: 30%;
+      height: 30%;
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      cursor: pointer;
+      fill: rgba(240, 250, 250, 0.2);
+      &:hover {
+        fill: rgba(240, 22, 63, 0.6);
+      }
+    }
     &:first-child {
       z-index: 1;
       position: absolute;
@@ -34,7 +55,7 @@ export const SArtist = styled.div`
         }
         height: 100%;
         transition: all 0.29s 0.38s ease-out;
-        transform: translateY(10%);
+        transform: translateY(4rem);
         color: #fff;
 
         > h1 {
@@ -102,8 +123,8 @@ export const SButton = styled.button`
   height: 4rem;
   width: 100%;
 
-  background-color: #0f0f0f;
-  color: #fff;
+  background-color: ${props => (props.positionPlayer ? '#fff' : '#0f0f0f')};
+  color: ${props => (props.positionPlayer ? '#0f0f0f' : '#fff')};
   font-family: BebasNeue-Bold;
   font-size: 2.3rem;
   letter-spacing: 4px;

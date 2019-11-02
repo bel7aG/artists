@@ -24,7 +24,7 @@ export const SEmptyBoxSVG = styled.svg`
   height: 40vh;
   > path {
     stroke-width: 3;
-    stroke: #999;
+    stroke: #fff;
     stroke-dasharray: 411;
     animation-name: ${svgStroke};
     animation-fill-mode: forwards;

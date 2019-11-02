@@ -89,7 +89,6 @@ button:focus {
 .blocks {
   .block-1,
   .block-3 {
-    transform: translateY(100vh);
     &__white {
       background-color: #fff;
       position: absolute;
@@ -101,7 +100,6 @@ button:focus {
   }
 
   .block-2 {
-    transform: translateY(-100vh);
   }
 }
 

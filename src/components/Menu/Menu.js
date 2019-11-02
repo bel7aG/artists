@@ -18,12 +18,6 @@ const Menu = ({
 }) => {
   const [searchSVGMask, setSearchSVGMask] = useState(false)
 
-  useEffect(() => {
-    alert(positionPlayer)
-    if (positionPlayer === 'SLIDER') {
-    }
-  }, [positionPlayer])
-
   const handleSearch = () => {
     toggleSearchAction(true)
     openSearchTweens(artistsLength)

@@ -4,9 +4,9 @@ export const SMenu = styled.div`
   position: fixed;
   height: 100vh;
   width: 60px;
-  right: 0%;
+  top: 0;
+  right: 0;
   background: #0f0f0f;
-  transform: translateY(100vh);
   z-index: 50;
 
   > .menu-items-wrapper {

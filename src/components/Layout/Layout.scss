@@ -18,9 +18,6 @@ a:visited,
 }
 
 html {
-}
-
-html {
   font: 62.5% BebasNeue-Bold, sans-serif !important;
   font-size: 62.5% !important;
   overflow: hidden !important;
@@ -29,6 +26,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
+  background-color: #0f0f0f;
   margin: 0;
   font-size: 1.6rem !important;
   -webkit-font-smoothing: antialiased;
@@ -681,4 +679,8 @@ button {
 .fade-enter.fade-enter-active .page {
   opacity: 1;
   transition: opacity 450ms ease-in;
+}
+
+.fade {
+  opacity: 1;
 }

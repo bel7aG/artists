@@ -55,7 +55,6 @@ const MenuNavigation = ({
             <h1
               className="artists-favorit"
               onClick={() => {
-                alert('^^^^')
                 handleMenuItem()
                 handleArtistsTweens()
                 positionPlayerAction('FAVORITS')
