@@ -671,16 +671,8 @@ button {
   padding-top: 20px;
 }
 
-.fade-enter .page {
-  opacity: 0;
-  z-index: 1;
-}
-
-.fade-enter.fade-enter-active .page {
-  opacity: 1;
-  transition: opacity 450ms ease-in;
-}
-
-.fade {
-  opacity: 1;
+.transition-group {
+  > div:first-child {
+    height: 100vh !important;
+  }
 }

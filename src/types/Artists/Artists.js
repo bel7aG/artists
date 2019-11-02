@@ -1,1 +1,2 @@
 export const FETCH_ARTISTS = 'FETCH_ARTISTS'
+export const SELECT_ARTIST = 'SELECT_ARTIST'

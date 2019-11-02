@@ -25,10 +25,9 @@ const Layout = ({ children, renderSlider = false }) => {
       {({ location: { pathname } }) => {
         return (
           <>
-            <Menu>{pathname === '/' && children}</Menu>
+            <Menu pathname={pathname}>{children}</Menu>
             <Layer />
             <Slider className="scrollbar" />
-            {pathname !== '/' && children}
             <Favorits />
           </>
         )

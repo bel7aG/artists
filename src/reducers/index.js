@@ -3,7 +3,7 @@ import { reducer as form } from 'redux-form'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { menu, search, positionPlayer } from './Mechanism'
-import { artists, favorits } from './Artists'
+import { artists, favorits, pickedArtist } from './Artists'
 
 const persistConfig = {
   key: 'root',
@@ -18,7 +18,8 @@ const mechanism = combineReducers({
 })
 
 const data = combineReducers({
-  artists
+  artists,
+  pickedArtist
 })
 
 const rootReducer = combineReducers({

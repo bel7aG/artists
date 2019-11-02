@@ -14,6 +14,7 @@ const Menu = ({
   toggleMenuAction,
   positionPlayerAction,
   positionPlayer,
+  pathname,
   artistsLength
 }) => {
   const [searchSVGMask, setSearchSVGMask] = useState(false)
@@ -44,8 +45,12 @@ const Menu = ({
         toggleSearchAction={toggleSearchAction}
       />
       <div className="search-svg-box">
-        <Mask mask={searchSVGMask} />
-        <SearchSVG handleSearch={handleSearch} />
+        {pathname === '/' && (
+          <>
+            <Mask mask={searchSVGMask} />
+            <SearchSVG handleSearch={handleSearch} />
+          </>
+        )}
       </div>
       <SMenuLayer className="menu-layer" />
       <MenuNavigation
@@ -66,6 +71,7 @@ Menu.propTypes = {
   toggleMenuAction: PropTypes.func.isRequired,
   toggleSearchAction: PropTypes.func.isRequired,
   positionPlayerAction: PropTypes.func.isRequired,
+  pathname: PropTypes.string.isRequired,
   positionPlayer: PropTypes.string.isRequired,
   artistsLength: PropTypes.number.isRequired
 }

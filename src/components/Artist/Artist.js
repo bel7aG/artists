@@ -2,7 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Rating from 'react-rating'
-import { addFavorit, deleteFavorit } from 'actions'
+import { addFavorit, deleteFavorit, selectArtist } from 'actions'
+import { Link } from '@reach/router'
+import { openSearchTweens } from 'tweens'
 
 import { SArtist, SButton } from './SArtist'
 import { Image, FavoritSVG } from 'components'
@@ -12,6 +14,7 @@ const Results = ({
   addFavorit,
   positionPlayer,
   deleteFavorit,
+  selectArtist,
   search
 }) => {
   const {
@@ -23,6 +26,7 @@ const Results = ({
   } = artist
 
   const handleAddFavorit = () => {
+    selectArtist(artist)
     addFavorit(artist)
   }
 
@@ -31,6 +35,13 @@ const Results = ({
   }
 
   const isFavorits = positionPlayer === 'FAVORITS' && !search
+
+  const handleArtistButton = () => {
+    const whenCustomerClickToFavoritTheSearchWillOpen = positionPlayer
+    if (whenCustomerClickToFavoritTheSearchWillOpen) {
+      openSearchTweens()
+    }
+  }
 
   return (
     <SArtist>
@@ -42,7 +53,12 @@ const Results = ({
           <div>
             <h1>{type}</h1>
           </div>
-          <SButton positionPlayer={isFavorits}>Details</SButton>
+          <SButton positionPlayer={isFavorits}>
+            <Link onClick={handleArtistButton} to={`/artist/${name}/details`}>
+              {' '}
+              Details
+            </Link>{' '}
+          </SButton>
         </div>
       </div>
       {mediaWikiImages.length ? <img src={mediaWikiImages[0].url} /> : <Image />}
@@ -60,6 +76,7 @@ Results.propTypes = {
   addFavorit: PropTypes.func.isRequired,
   deleteFavorit: PropTypes.func.isRequired,
   positionPlayer: PropTypes.string.isRequired,
+  selectArtist: PropTypes.func.isRequired,
   search: PropTypes.bool.isRequired
 }
 
@@ -70,5 +87,5 @@ const mapStateToProps = ({ mechanism: { positionPlayer, search } }) => ({
 
 export default connect(
   mapStateToProps,
-  { addFavorit, deleteFavorit }
+  { addFavorit, deleteFavorit, selectArtist }
 )(Results)
