@@ -47,7 +47,7 @@ const SDetails = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(100vw);
+  width: 100vw;
   min-height: 100vh;
   max-height: 100vh;
   overflow: hidden;
@@ -65,7 +65,8 @@ const SDetails = styled.div`
 const SDetailsWrapper = styled.div`
   position: relative;
   > div:first-child {
-    height: 60vh;
+    max-height: 60vh;
+    min-height: auto;
     width: 50%;
     min-width: 32rem;
     margin: 0 auto;
