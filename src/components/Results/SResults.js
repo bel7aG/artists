@@ -7,7 +7,7 @@ export const SResults = styled.div`
 `
 
 export const SResultsList = styled.div`
-  padding-top: 4rem;
+  padding: 4rem 0;
   display: grid;
   grid-gap: 2rem 6%;
   align-items: flex-start;
