@@ -9,7 +9,7 @@ const Favorits = ({ favorits }) => {
 
   useEffect(() => {
     if (favorits.length) {
-      setRender(<Results data={favorits} />)
+      setRender(<Results data={favorits.reverse()} />)
     } else {
       setRender(<Empty message="You dont have favorits GOOO Boom one." />)
     }
