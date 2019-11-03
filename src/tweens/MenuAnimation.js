@@ -150,12 +150,12 @@ export const closeMenuAnimation = isHome => {
 
 export const handleArtistsTweens = () => {
   closeMenuAnimation()
-    .to('.slider', 2, {
+    .to('.slider', 1.06, {
       y: '-100vh',
       delay: -3.2,
       ease: Power2.easeInOut
     })
-    .to('.favorits', 2, {
+    .to('.favorits', 1.06, {
       y: 0,
       ease: Power2.easeInOut,
       delay: -3.2
