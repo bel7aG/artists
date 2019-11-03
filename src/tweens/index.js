@@ -5,15 +5,21 @@ import {
   handleArtistsTweens,
   handleHomeTweens
 } from './MenuAnimation'
-import { openSearchTweens, showTween, hideTween } from './SearchTweens'
+import {
+  openSearchTweens,
+  closeSearchTweens,
+  showTween,
+  hideTween
+} from './SearchTweens'
 
 export {
   StarterTweens,
   openMenuAnimation,
   closeMenuAnimation,
   handleArtistsTweens,
-  openSearchTweens,
   handleHomeTweens,
+  openSearchTweens,
+  closeSearchTweens,
   showTween,
   hideTween
 }

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { navigate, Redirect } from '@reach/router'
-import { Artist, Scrollbar, Flex, FavoritSVG } from 'components'
-import { showTween, hideTween } from 'tweens'
+import { Artist, Releases, Scrollbar, Flex, FavoritSVG } from 'components'
+import { closeSearchTweens, showTween, hideTween } from 'tweens'
 import { addFavorit, deleteFavorit } from 'actions'
 
 const SDetails = styled.div`
@@ -73,12 +73,19 @@ const SDetailsWrapper = styled.div`
   }
 `
 
-const Details = ({ pickedArtist, favorits, addFavorit, deleteFavorit }) => {
+const Details = ({
+  pickedArtist,
+  favorits,
+  addFavorit,
+  deleteFavorit,
+  positionPlayer
+}) => {
   useEffect(() => {}, [favorits])
 
   useEffect(() => {
     showTween('.page-details', 1)
     return () => {
+      hideTween('.scrollbar', 0.2)
       hideTween('.search-svg', 0.4)
     }
   }, [])
@@ -89,6 +96,9 @@ const Details = ({ pickedArtist, favorits, addFavorit, deleteFavorit }) => {
 
   const handleBackHome = () => {
     hideTween('.page-details', 1)
+    if (positionPlayer === 'FAVORITS') {
+      closeSearchTweens()
+    }
     setTimeout(() => {
       navigate('/')
     }, 1000)
@@ -106,6 +116,10 @@ const Details = ({ pickedArtist, favorits, addFavorit, deleteFavorit }) => {
     }
   }
 
+  const {
+    releases: { nodes: releases }
+  } = pickedArtist
+
   return (
     <SDetails isInFavorit={isInFavorit} className="page-details">
       <Flex direction="row" x="space-between" flex="0.1" y="center">
@@ -119,6 +133,7 @@ const Details = ({ pickedArtist, favorits, addFavorit, deleteFavorit }) => {
       <Scrollbar>
         <SDetailsWrapper>
           <Artist isDetails={true} artist={pickedArtist} />
+          <Releases releases={pickedArtist.releases.nodes} />
         </SDetailsWrapper>
       </Scrollbar>
     </SDetails>
@@ -130,14 +145,21 @@ Details.propTypes = {
     PropTypes.object.isRequired,
     PropTypes.instanceOf(null)
   ]),
+  positionPlayer: PropTypes.bool.isRequired,
   favorits: PropTypes.array.isRequired,
   addFavorit: PropTypes.func.isRequired,
+
   deleteFavorit: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ data: { pickedArtist }, favorits }) => ({
+const mapStateToProps = ({
+  data: { pickedArtist },
+  favorits,
+  mechanism: { positionPlayer }
+}) => ({
   pickedArtist,
-  favorits
+  favorits,
+  positionPlayer
 })
 
 export default connect(

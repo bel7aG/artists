@@ -20,6 +20,7 @@ import Favorits from './Favorits'
 import Image from './image'
 import Loader from './Loader'
 import Empty from './Empty'
+import Releases from './Releases'
 
 export * from './SVG'
 
@@ -45,5 +46,6 @@ export {
   Favorits,
   Image,
   Loader,
-  Empty
+  Empty,
+  Releases
 }

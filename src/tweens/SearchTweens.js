@@ -63,3 +63,33 @@ export const hideTween = (className, duration) => {
     }
   )
 }
+
+export const closeSearchTweens = () => {
+  const closeSearchTweens = new TimelineLite()
+
+  closeSearchTweens
+
+    .to('.scrollbar', 0, {
+      opacity: 0,
+      display: 'none',
+      ease: Power2.easeInOut
+    })
+    .to('.text-slide', 0.8, {
+      opacity: 0,
+      ease: Power2.easeInOut
+    })
+    .to('.block-1', 1.6, {
+      width: '5%',
+      ease: Power2.easeInOut
+    })
+    .to('.menu', 1.6, {
+      width: 60,
+      delay: -1.6,
+      ease: Power2.easeInOut
+    })
+    .to('.search-svg', 0.46, {
+      transform: 'translate(-50%, -50%) rotate(0)',
+      opacity: 1,
+      ease: Power2.easeInOut
+    })
+}

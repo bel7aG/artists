@@ -42,6 +42,9 @@ const Results = ({
       openSearchTweens()
       toggleSearchAction(true)
     }
+    if (positionPlayer === 'FAVORITS') {
+      toggleSearchAction(false)
+    }
   }
 
   return (

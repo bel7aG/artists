@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { TweenMax } from 'gsap'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { SearchForm, Results, Loader } from 'components'
@@ -13,17 +14,22 @@ export const SHome = styled.div`
   z-index: 0;
 `
 
-const Home = ({ fecthArtists, artists }) => {
+const Home = ({ fecthArtists, artists, isSearchOpen }) => {
   const [text, setText] = useState('')
   const [isTypingNewSearch, setIsTypingNewSearch] = useState(false)
+
+  useEffect(() => {
+    if (!isSearchOpen) {
+      TweenMax.to('.scrollbar', 0.3, { opacity: 0 })
+    }
+    TweenMax.to('.search-svg', 0.3, { opacity: 1 })
+  }, [])
 
   const {
     data: { search } = {},
     loading = false,
     error = null,
-    fetchMore,
-
-    networkStatus
+    fetchMore
   } = useQuery(ARTISTS_APOLLO_QUERY, {
     skip: !text || !/^[a-zA-Z]*$/.test(text) || loading,
     variables: {
@@ -153,7 +159,31 @@ const ARTISTS_APOLLO_QUERY = gql`
           }
           releases {
             nodes {
+              media {
+                title
+                tracks {
+                  length
+                  recording {
+                    title
+                    length
+                    video
+                    rating {
+                      voteCount
+                      value
+                    }
+                    theAudioDB {
+                      musicVideo {
+                        likeCount
+                        dislikeCount
+                        url
+                      }
+                    }
+                  }
+                }
+              }
               title
+              country
+              barcode
             }
           }
         }
@@ -164,15 +194,18 @@ const ARTISTS_APOLLO_QUERY = gql`
 
 Home.propTypes = {
   fecthArtists: PropTypes.func.isRequired,
-  artists: PropTypes.object.isRequired
+  artists: PropTypes.object.isRequired,
+  isSearchOpen: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = ({
   data: {
     artists: { artists }
-  }
+  },
+  mechanism: { search: isSearchOpen }
 }) => ({
-  artists
+  artists,
+  isSearchOpen
 })
 
 export default connect(
