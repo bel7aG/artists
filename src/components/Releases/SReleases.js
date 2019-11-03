@@ -23,6 +23,9 @@ export const SRelease = styled.div`
   }
   > div {
     height: 100%;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
   > div > * {
     width: 100% !important;
