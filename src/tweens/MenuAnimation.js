@@ -2,6 +2,7 @@ import { TimelineLite, Power2, Elastic, TweenMax } from 'gsap'
 
 export const openMenuAnimation = whenSearchOpenGoFast => {
   const menuAnimation = new TimelineLite()
+
   menuAnimation
     .to('.scrollbar', whenSearchOpenGoFast ? 0.4 : 0, {
       opacity: 0,
@@ -77,7 +78,9 @@ export const closeMenuAnimation = isHome => {
     width: '5%',
     ease: Power2.easeInOut
   })
+
   const menuAnimation = new TimelineLite()
+
   menuAnimation
     .to('.menu-items-wrapper', 0.8, {
       opacity: 0,
@@ -123,6 +126,7 @@ export const closeMenuAnimation = isHome => {
       transform: 'translate(-50%, -50%) rotate(0)',
       ease: Power2.easeInOut
     })
+
     .fromTo(
       '.menu-burger__item-2',
       1.4,

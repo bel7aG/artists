@@ -55,7 +55,8 @@ export const SArtist = styled.div`
         }
         height: 100%;
         transition: all 0.29s 0.38s ease-out;
-        transform: translateY(4rem);
+        transform: ${props =>
+          props.isDetails ? 'translateY(0)' : ' translateY(4rem)'};
         color: #fff;
 
         > h1 {
@@ -95,7 +96,8 @@ export const SArtist = styled.div`
       }
 
       &:hover {
-        background-color: rgba(18, 0, 64, 0.6);
+        background-color: ${props =>
+          props.isDetails ? 'rgba(0, 41, 124, 0.4)' : 'rgba(18, 0, 64, 0.6)'};
         > div {
           > *:not(:last-child) {
             opacity: 1;

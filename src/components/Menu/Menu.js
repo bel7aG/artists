@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { SMenu, SMenuLayer } from './SMenu'
+import { SMenu, SMenuLayer, SSearchBox } from './SMenu'
 import { Burger, MenuNavigation, Mask, SearchSVG } from 'components'
 import { openSearchTweens } from 'tweens'
 import { toggleMenuAction, toggleSearchAction, positionPlayerAction } from 'actions'
@@ -38,28 +38,28 @@ const Menu = ({
 
   return (
     <SMenu className="menu">
-      <Burger
-        pathname={pathname}
-        menu={menu}
-        search={search}
-        toggleMenuAction={toggleMenuAction}
-        toggleSearchAction={toggleSearchAction}
-      />
-      <div className="search-svg-box">
-        {pathname === '/' && (
-          <>
+      {pathname === '/' && (
+        <>
+          <Burger
+            pathname={pathname}
+            menu={menu}
+            search={search}
+            toggleMenuAction={toggleMenuAction}
+            toggleSearchAction={toggleSearchAction}
+          />
+          <SSearchBox className="search-svg-box">
             <Mask mask={searchSVGMask} />
             <SearchSVG handleSearch={handleSearch} />
-          </>
-        )}
-      </div>
-      <SMenuLayer className="menu-layer" />
-      <MenuNavigation
-        menu={menu}
-        toggleSearchAction={toggleSearchAction}
-        toggleMenuAction={toggleMenuAction}
-        positionPlayerAction={positionPlayerAction}
-      />
+          </SSearchBox>
+          <SMenuLayer className="menu-layer" />
+          <MenuNavigation
+            menu={menu}
+            toggleSearchAction={toggleSearchAction}
+            toggleMenuAction={toggleMenuAction}
+            positionPlayerAction={positionPlayerAction}
+          />
+        </>
+      )}
       {children}
     </SMenu>
   )

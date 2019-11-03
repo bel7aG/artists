@@ -8,7 +8,8 @@ const SFavoritSVG = styled.svg`
     css`
       ${{ ...props.stylish }}
     `}
-  transition: all .23s ease-in-out;
+  cursor: pointer;
+  transition: all 0.23s ease-in-out;
 `
 
 const Favorit = ({ stylish }) => {

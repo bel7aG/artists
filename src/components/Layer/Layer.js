@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { SLayer, SLine } from './SLayer'
 import { StarterTweens } from 'tweens'
 
-const Layer = ({ backgroundColor = '#fff', lineColor = '#262626' }) => {
+const Layer = ({ backgroundColor = '#000', lineColor = '#262626' }) => {
   useEffect(() => {
     StarterTweens()
   }, [])

@@ -3,20 +3,19 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Rating from 'react-rating'
 import { Link } from '@reach/router'
-import { addFavorit, deleteFavorit, selectArtist } from 'actions'
+import { deleteFavorit, selectArtist } from 'actions'
 import { openSearchTweens } from 'tweens'
 import { Image, FavoritSVG } from 'components'
 import { termCoolForLink } from 'helpers'
-
 import { SArtist, SButton } from './SArtist'
 
 const Results = ({
   artist = {},
-  addFavorit,
   positionPlayer,
   deleteFavorit,
   selectArtist,
-  search
+  search,
+  isDetails
 }) => {
   const {
     name,
@@ -28,7 +27,6 @@ const Results = ({
 
   const handleAddFavorit = () => {
     selectArtist(artist)
-    addFavorit(artist)
   }
 
   const handleDeleteFavorit = () => {
@@ -45,7 +43,7 @@ const Results = ({
   }
 
   return (
-    <SArtist>
+    <SArtist isDetails={isDetails}>
       <div onClick={handleAddFavorit}>
         <div>
           <h1>{name}</h1>
@@ -54,14 +52,16 @@ const Results = ({
           <div>
             <h1>{type}</h1>
           </div>
-          <SButton positionPlayer={isFavorits}>
-            <Link
-              onClick={handleArtistButton}
-              to={`/artist/${termCoolForLink(name)}/details`}
-            >
-              Details
-            </Link>
-          </SButton>
+          {isDetails === undefined && (
+            <SButton positionPlayer={isFavorits}>
+              <Link
+                onClick={handleArtistButton}
+                to={`/artist/${termCoolForLink(name)}/details`}
+              >
+                Details
+              </Link>
+            </SButton>
+          )}
         </div>
       </div>
       {mediaWikiImages.length ? <img src={mediaWikiImages[0].url} /> : <Image />}
@@ -76,11 +76,11 @@ const Results = ({
 
 Results.propTypes = {
   artist: PropTypes.object.isRequired,
-  addFavorit: PropTypes.func.isRequired,
   deleteFavorit: PropTypes.func.isRequired,
   positionPlayer: PropTypes.string.isRequired,
   selectArtist: PropTypes.func.isRequired,
-  search: PropTypes.bool.isRequired
+  search: PropTypes.bool.isRequired,
+  isDetails: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = ({ mechanism: { positionPlayer, search } }) => ({
@@ -90,5 +90,5 @@ const mapStateToProps = ({ mechanism: { positionPlayer, search } }) => ({
 
 export default connect(
   mapStateToProps,
-  { addFavorit, deleteFavorit, selectArtist }
+  { deleteFavorit, selectArtist }
 )(Results)

@@ -4,6 +4,10 @@ const animation = new TimelineLite()
 
 export const StarterTweens = () => {
   animation
+    .to('.layer', 1.3, {
+      backgroundColor: '#fff',
+      ease: Power2.easeInOut
+    })
     .fromTo(
       '.scrollbar',
       0,
@@ -17,6 +21,7 @@ export const StarterTweens = () => {
         ease: Power2.easeInOut
       }
     )
+
     .to('.line', 3, {
       width: '50vw',
       ease: Power2.easeIn

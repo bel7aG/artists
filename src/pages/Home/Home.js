@@ -10,6 +10,7 @@ import { showTween, hideTween } from 'tweens'
 
 export const SHome = styled.div`
   position: relative;
+  z-index: 0;
 `
 
 const Home = ({ fecthArtists, artists }) => {
@@ -34,10 +35,6 @@ const Home = ({ fecthArtists, artists }) => {
     setText(searchField)
     setIsTypingNewSearch(true)
   }
-
-  useEffect(() => {
-    showTween('.home', 2.1)
-  }, [])
 
   useEffect(() => {
     if (search) {

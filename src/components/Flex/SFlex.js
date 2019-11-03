@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const FlexRow = styled.div`
+  z-index: 10;
   display: flex;
   height: ${props => (props.stylish && props.stylish.height) || '100%'};
   width: ${props => (props.stylish && props.stylish.width) || '100%'};
