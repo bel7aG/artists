@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Rating from 'react-rating'
 import { Link } from '@reach/router'
-import { deleteFavorit, selectArtist } from 'actions'
+import { deleteFavorit, selectArtist, toggleSearchAction } from 'actions'
 import { openSearchTweens } from 'tweens'
 import { Image, FavoritSVG } from 'components'
 import { termCoolForLink } from 'helpers'
@@ -15,7 +15,8 @@ const Results = ({
   deleteFavorit,
   selectArtist,
   search,
-  isDetails
+  isDetails,
+  toggleSearchAction
 }) => {
   const {
     name,
@@ -39,6 +40,7 @@ const Results = ({
     const whenCustomerClickToFavoritTheSearchWillOpen = positionPlayer
     if (whenCustomerClickToFavoritTheSearchWillOpen) {
       openSearchTweens()
+      toggleSearchAction(true)
     }
   }
 
@@ -79,6 +81,7 @@ Results.propTypes = {
   deleteFavorit: PropTypes.func.isRequired,
   positionPlayer: PropTypes.string.isRequired,
   selectArtist: PropTypes.func.isRequired,
+  toggleSearchAction: PropTypes.func.isRequired,
   search: PropTypes.bool.isRequired,
   isDetails: PropTypes.bool.isRequired
 }
@@ -90,5 +93,5 @@ const mapStateToProps = ({ mechanism: { positionPlayer, search } }) => ({
 
 export default connect(
   mapStateToProps,
-  { deleteFavorit, selectArtist }
+  { deleteFavorit, selectArtist, toggleSearchAction }
 )(Results)
