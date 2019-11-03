@@ -11,7 +11,8 @@ const SDetails = styled.div`
   > div {
     position: fixed;
     &:first-child {
-      height: 9.6rem;
+      height: 0;
+      overflow: visible;
       z-index: 1112;
       padding: 3rem 1rem;
 
