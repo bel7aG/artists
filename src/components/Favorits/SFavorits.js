@@ -9,4 +9,18 @@ export const SFavorits = styled.div`
   max-height: 100vh;
   overflow: hidden;
   width: calc(100vw - 6rem);
+
+  > div:first-child {
+    > div:first-child {
+      > div {
+        &:first-child {
+          padding: 3rem 3rem 8rem 3rem !important;
+        }
+
+        &:last-child {
+          right: 0 !important;
+        }
+      }
+    }
+  }
 `
