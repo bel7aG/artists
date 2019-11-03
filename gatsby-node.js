@@ -14,6 +14,14 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       modules: [path.resolve(__dirname, 'src'), 'node_modules']
     }
   })
+
+  if (stage === 'build-javascript') {
+    // Turn off source maps
+    actions.setWebpackConfig({
+      devtool: false
+    })
+  }
+
   if (stage === 'build-html') {
     actions.setWebpackConfig({
       module: {
