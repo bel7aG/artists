@@ -40,10 +40,6 @@ const Results = ({
     const whenCustomerClickToFavoritTheSearchWillOpen = positionPlayer
     if (whenCustomerClickToFavoritTheSearchWillOpen) {
       openSearchTweens()
-      toggleSearchAction(true)
-    }
-    if (positionPlayer === 'FAVORITS') {
-      toggleSearchAction(false)
     }
   }
 

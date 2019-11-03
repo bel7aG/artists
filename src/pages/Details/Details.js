@@ -78,7 +78,8 @@ const Details = ({
   favorits,
   addFavorit,
   deleteFavorit,
-  positionPlayer
+  positionPlayer,
+  search
 }) => {
   useEffect(() => {}, [favorits])
 
@@ -96,7 +97,7 @@ const Details = ({
 
   const handleBackHome = () => {
     hideTween('.page-details', 1)
-    if (positionPlayer === 'FAVORITS') {
+    if (positionPlayer === 'FAVORITS' && !search) {
       closeSearchTweens()
     }
     setTimeout(() => {
@@ -146,20 +147,21 @@ Details.propTypes = {
     PropTypes.instanceOf(null)
   ]),
   positionPlayer: PropTypes.bool.isRequired,
+  search: PropTypes.bool.isRequired,
   favorits: PropTypes.array.isRequired,
   addFavorit: PropTypes.func.isRequired,
-
   deleteFavorit: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ({
   data: { pickedArtist },
   favorits,
-  mechanism: { positionPlayer }
+  mechanism: { search, positionPlayer }
 }) => ({
   pickedArtist,
   favorits,
-  positionPlayer
+  positionPlayer,
+  search
 })
 
 export default connect(
