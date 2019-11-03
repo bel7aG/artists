@@ -9,7 +9,6 @@ import Search from './Search'
 import Flex from './Flex'
 import Menu from './Menu'
 import List from './List'
-import Wrapper from './Wrapper'
 import SearchForm from './SearchForm'
 import SearchField from './SearchField'
 import SEO from './SEO'
@@ -36,7 +35,6 @@ export {
   Flex,
   Menu,
   List,
-  Wrapper,
   SearchForm,
   SearchField,
   SEO,

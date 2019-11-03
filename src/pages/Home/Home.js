@@ -22,7 +22,9 @@ const Home = ({ fecthArtists, artists, isSearchOpen }) => {
     if (!isSearchOpen) {
       TweenMax.to('.scrollbar', 0.3, { opacity: 0 })
     }
-    TweenMax.to('.search-svg', 0.3, { opacity: 1 })
+    if (!isSearchOpen) {
+      TweenMax.to('.search-svg', 0.3, { opacity: 1 })
+    }
   }, [])
 
   const {

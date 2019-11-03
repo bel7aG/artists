@@ -81,8 +81,6 @@ const Details = ({
   positionPlayer,
   search
 }) => {
-  useEffect(() => {}, [favorits])
-
   useEffect(() => {
     showTween('.page-details', 1)
     return () => {
@@ -104,9 +102,6 @@ const Details = ({
       navigate('/')
     }, 1000)
   }
-  console.log('^^^^^^^^ôooooooooooo')
-  console.log(pickedArtist)
-  console.log('^^^^^^^^ôooooooooooo')
 
   const isInFavorit = favorits.find(({ id }) => id === pickedArtist.id)
   const handleFavorit = () => {
