@@ -33,7 +33,7 @@ const Home = ({ fecthArtists, artists, isSearchOpen }) => {
     error = null,
     fetchMore
   } = useQuery(ARTISTS_APOLLO_QUERY, {
-    skip: !text || !/^[a-zA-Z]*$/.test(text) || loading,
+    skip: !text || !/^([a-zA-Z]+\s)*[a-zA-Z]+$/.test(text) || loading,
     variables: {
       query: text
     }
