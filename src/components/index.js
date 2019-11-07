@@ -5,7 +5,6 @@ import Burger from './Burger'
 import Mask from './Mask'
 import Block from './Block'
 import Scrollbar from './Scrollbar'
-import Search from './Search'
 import Flex from './Flex'
 import Menu from './Menu'
 import List from './List'
@@ -31,7 +30,6 @@ export {
   Mask,
   Block,
   Scrollbar,
-  Search,
   Flex,
   Menu,
   List,
