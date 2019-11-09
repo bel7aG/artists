@@ -29,18 +29,23 @@ const MenuNavigation = ({
         <Flex stylish={{ x: 'flex-end', minWidth: '29%', maxWidth: '22rem' }}>
           <List className="menu-items__left">
             <span>
+              <a target="_blank" href="https://bel7aG.netlify.com">
+                Portfolio
+              </a>
+            </span>
+            <span>
+              <a target="_blank" href="https://www.linkedin.com/in/bel7ag">
+                LinkedIn
+              </a>
+            </span>
+            <span>
+              <a target="_blank" href="https://github.com/bel7aG">
+                Github
+              </a>
+            </span>
+            <span>
               <a target="_blank" href="https://instagram.com/belhassengh">
                 Instagram
-              </a>
-            </span>
-            <span>
-              <a target="_blank" href="https://instagram.com/belhassengh">
-                Facebook
-              </a>
-            </span>
-            <span>
-              <a target="_blank" href="https://instagram.com/belhassengh">
-                Github
               </a>
             </span>
           </List>
@@ -73,7 +78,9 @@ const MenuNavigation = ({
               />
             </h1>
             <h1>
-              <Link to="/">Contact</Link>
+              <a target="_blank" href="https://bel7aG.netlify.com">
+                Creator
+              </a>
             </h1>
           </List>
         </Flex>

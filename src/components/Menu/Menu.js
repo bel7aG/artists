@@ -29,7 +29,7 @@ const Menu = ({
 
     setTimeout(() => {
       setMask(false)
-    }, 4400)
+    }, 4100)
   }
 
   useEffect(() => {
