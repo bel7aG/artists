@@ -10,6 +10,6 @@ export const SMask = styled.span`
   /*
     I use the red when i want to DEBUG IT (WHERE MAGICS HAPPEN)
   */
-  background-color: red;
+  /* background-color: red; */
   cursor: default;
 `
