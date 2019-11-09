@@ -38,6 +38,7 @@ const Menu = ({
 
   useEffect(() => {
     if (search) {
+      maskEveryThingRelatedToMenu()
       setSearchSVGMask(true)
     } else {
       setSearchSVGMask(false)
@@ -58,7 +59,7 @@ const Menu = ({
             toggleSearchAction={toggleSearchAction}
           />
           <SSearchBox className="search-svg-box">
-            <Mask mask={searchSVGMask} />
+            <Mask mask={searchSVGMask || mask} />
             <SearchSVG handleSearch={handleSearch} />
           </SSearchBox>
           <SMenuLayer className="menu-layer" />

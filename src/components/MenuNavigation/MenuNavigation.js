@@ -50,9 +50,9 @@ const MenuNavigation = ({
             </span>
           </List>
         </Flex>
-        <Mask mask={mask} />
         <Flex stylish={{ marginTop: '0.7rem', maxWidth: '62.5%' }}>
           <List className="menu-items__right">
+            <Mask mask={mask} />
             <h1
               onClick={() => {
                 handleMenuItem('SLIDER')
