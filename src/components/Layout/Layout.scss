@@ -1,5 +1,4 @@
 * {
-  user-select: none;
 }
 
 a,
@@ -16,29 +15,11 @@ a:visited,
 }
 
 * {
-  font-family: BebasNeue-Bold, sans-serif !important;
-  overflow: hidden;
   margin: 0;
   padding: 0;
-}
-
-html {
-  font: 62.5% BebasNeue-Bold, sans-serif !important;
-  font-size: 62.5% !important;
-  overflow: hidden !important;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  background-color: #0f0f0f;
-  margin: 0;
-  font-size: 1.6rem !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-img {
-  border-style: none;
+  user-select: none;
+  font-family: BebasNeue-Bold, sans-serif !important;
+  overflow: hidden;
 }
 
 *,
@@ -46,11 +27,29 @@ img {
 *:after {
   box-sizing: inherit;
 }
-body {
+
+html {
+  font: 62.5% BebasNeue-Bold, sans-serif !important;
+  font-size: 62.5% !important;
   color: hsla(0, 0%, 0%, 0.8);
+  overflow: hidden !important;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #0f0f0f;
+  margin: 0;
+  font-size: 1.6rem !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
+}
+
+img {
+  border-style: none;
 }
 
 @media only screen and (max-width: 480px) {
@@ -63,10 +62,4 @@ button {
   background-color: transparent;
   outline: none;
   border: 0;
-}
-
-.transition-group {
-  > div:first-child {
-    height: 100vh !important;
-  }
 }

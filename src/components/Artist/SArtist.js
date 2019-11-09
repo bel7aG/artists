@@ -54,7 +54,7 @@ export const SArtist = styled.div`
           transition: opacity 0.59s 0.68s ease-out;
         }
         height: 100%;
-        transition: all 0.29s 0.38s ease-out;
+        transition: all 0.29s ease-out;
         transform: ${props =>
           props.isDetails ? 'translateY(0)' : ' translateY(4rem)'};
         color: #fff;

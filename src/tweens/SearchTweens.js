@@ -1,4 +1,4 @@
-import { TimelineLite, Power2, Elastic, TweenMax } from 'gsap'
+import { TimelineLite, Power2, TweenMax } from 'gsap'
 
 export const openSearchTweens = artistsLength => {
   const searchAnimation = new TimelineLite()

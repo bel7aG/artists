@@ -7,19 +7,6 @@ import { Scrollbar, Favorits, Slider, Menu, Layer, Flex, List } from 'components
 import './Layout.scss'
 
 const Layout = ({ children, renderSlider = false }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  console.log('aaaaaaaaaaaannnnnnnnnnnaaaaaaaamiiiiiiiiiii')
-  console.log(children)
-
   return (
     <Location>
       {({ location: { pathname } }) => {

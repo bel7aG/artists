@@ -1,68 +1,36 @@
 import React, { useEffect } from 'react'
-import $ from 'jquery'
-import 'slick-carousel'
+import { slick, sliderData } from './SliderDetails'
+import { ArrowForward, ArrowBackward, Block } from 'components'
 import './Slider.scss'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import { Block } from 'components'
-import { ArrowForward, ArrowBackward, Scrollbar, Search } from 'components'
 
-const Slider = ({ children }) => {
+const Slider = () => {
   useEffect(() => {
-    const sickPrimary = {
-      autoplay: true,
-      autoplaySpeed: 2400,
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      speed: 1800,
-      cssEase: 'cubic-bezier(.84, 0, .08, .99)',
-      asNavFor: '.text-slider',
-      centerMode: true,
-      prevArrow: $('.prev'),
-      nextArrow: $('.next')
-    }
-
-    const sickSecondary = {
-      autoplay: true,
-      autoplaySpeed: 2400,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      speed: 1800,
-      cssEase: 'cubic-bezier(.84, 0, .08, .99)',
-      asNavFor: '.image-slider',
-      prevArrow: $('.prev'),
-      nextArrow: $('.next')
-    }
-
-    $('.image-slider')
-      .not('.slick-initialized')
-      .slick(sickPrimary)
-
-    $('.text-slider')
-      .not('.slick-initialized')
-      .slick(sickSecondary)
+    slick()
   }, [])
+
+  const sliderDataRender = renderWHO =>
+    renderWHO === 'text'
+      ? sliderData.map(({ text, key }) => (
+          <div className="text-slide" key={key}>
+            <h1>{text}.</h1>
+          </div>
+        ))
+      : sliderData.map(({ imageUrl, key }) => (
+          <div
+            key={key}
+            className="image-slide"
+            id="one"
+            style={{
+              background: `url(${imageUrl}) no-repeat 50% 50%`,
+              backgroundSize: 'cover'
+            }}
+          />
+        ))
 
   return (
     <div className="slider">
       <div className="text-slider-wrapper">
-        <div className="text-slider">
-          <div className="text-slide">
-            <h1>Headset.</h1>
-          </div>
-          <div className="text-slide">
-            <h1>Music.</h1>
-          </div>
-          <div className="text-slide">
-            <h1>Life.</h1>
-          </div>
-          <div className="text-slide">
-            <h1>Microphone.</h1>
-          </div>
-          <div className="text-slide">
-            <h1>Beats.</h1>
-          </div>
-        </div>
+        <div className="text-slider">{sliderDataRender('text')}</div>
       </div>
 
       <div className="slider-control">
@@ -86,55 +54,14 @@ const Slider = ({ children }) => {
         </div>
       </div>
 
-      <div className="blocks">
+      <Block className="blocks">
         <Block className="block-1" />
         <Block className="block-2" />
-      </div>
+      </Block>
 
       <div className="overlay" />
 
-      <div className="image-slider">
-        <div
-          className="image-slide"
-          id="one"
-          style={{
-            background: `url("https://images.unsplash.com/photo-1467196271131-42c8c8499d72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1368&q=80") no-repeat 50% 50%`,
-            backgroundSize: 'cover'
-          }}
-        />
-        <div
-          className="image-slide"
-          id="two"
-          style={{
-            background: `url(https://images.unsplash.com/photo-1497032205916-ac775f0649ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80) no-repeat 50% 50%`,
-            backgroundSize: 'cover'
-          }}
-        />
-        <div
-          className="image-slide"
-          id="three"
-          style={{
-            background: `url(https://images.unsplash.com/photo-1528190303099-2408e63c79e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1344&q=80) no-repeat 50% 50%`,
-            backgroundSize: 'cover'
-          }}
-        />
-        <div
-          className="image-slide"
-          id="four"
-          style={{
-            background: `url(https://images.unsplash.com/photo-1531651008558-ed1740375b39?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80) no-repeat 50% 50%`,
-            backgroundSize: 'cover'
-          }}
-        />
-        <div
-          className="image-slide"
-          id="five"
-          style={{
-            background: `url(https://images.unsplash.com/photo-1569184475970-80ac8ae02895?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80) no-repeat 50% 50%`,
-            backgroundSize: 'cover'
-          }}
-        />
-      </div>
+      <div className="image-slider">{sliderDataRender()}</div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Rating from 'react-rating'
@@ -65,7 +65,11 @@ const Results = ({
           )}
         </div>
       </div>
-      {mediaWikiImages.length ? <img src={mediaWikiImages[0].url} /> : <Image />}
+      {mediaWikiImages.length ? (
+        <img src={mediaWikiImages[0].url} alt="" />
+      ) : (
+        <Image />
+      )}
       {isFavorits && (
         <div onClick={handleDeleteFavorit}>
           <FavoritSVG />

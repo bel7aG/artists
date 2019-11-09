@@ -13,7 +13,6 @@ const Menu = ({
   toggleSearchAction,
   toggleMenuAction,
   positionPlayerAction,
-  positionPlayer,
   pathname,
   artistsLength
 }) => {
@@ -78,7 +77,7 @@ Menu.propTypes = {
 }
 
 const mapStateToProps = ({
-  mechanism: { menu, search, positionPlayer },
+  mechanism: { menu, search },
   data: {
     artists: {
       artists: { nodes: artists }
@@ -87,7 +86,6 @@ const mapStateToProps = ({
 }) => ({
   menu,
   search,
-  positionPlayer,
   artistsLength: artists.length
 })
 

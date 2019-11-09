@@ -61,7 +61,7 @@ export const StarterTweens = () => {
       ease: Power2.easeInOut
     })
     .to('.overlay ', 1, {
-      width: '21%',
+      width: '20.1%',
       delay: -0.6,
       ease: Power2.easeInOut
     })
