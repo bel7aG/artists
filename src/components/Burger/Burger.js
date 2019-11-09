@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { openMenuAnimation, closeMenuAnimation } from 'tweens'
 import { SBurger } from './SBurger'
@@ -9,21 +9,16 @@ const Burger = ({
   search,
   toggleMenuAction,
   toggleSearchAction,
-  pathname
+  maskEveryThingRelatedToMenu,
+  pathname,
+  mask
 }) => {
-  const [mask, setMask] = useState(false)
-
   useEffect(() => {
     toggleMenuAction(true)
   }, [])
 
   const handleMenu = () => {
-    setMask(true)
-
-    setTimeout(() => {
-      setMask(false)
-    }, 5000)
-
+    maskEveryThingRelatedToMenu()
     toggleMenuAction(menu)
 
     if (menu) {
@@ -49,8 +44,10 @@ const Burger = ({
 Burger.propTypes = {
   toggleMenuAction: PropTypes.func.isRequired,
   toggleSearchAction: PropTypes.func.isRequired,
-  menu: PropTypes.bool.isRequired,
+  maskEveryThingRelatedToMenu: PropTypes.func.isRequired,
+  mask: PropTypes.bool.isRequired,
   search: PropTypes.bool.isRequired,
+  menu: PropTypes.bool.isRequired,
   pathname: PropTypes.string.isRequired
 }
 

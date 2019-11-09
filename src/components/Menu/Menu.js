@@ -17,10 +17,19 @@ const Menu = ({
   artistsLength
 }) => {
   const [searchSVGMask, setSearchSVGMask] = useState(false)
+  const [mask, setMask] = useState(false)
 
   const handleSearch = () => {
     toggleSearchAction(true)
     openSearchTweens(artistsLength)
+  }
+
+  const maskEveryThingRelatedToMenu = () => {
+    setMask(true)
+
+    setTimeout(() => {
+      setMask(false)
+    }, 4400)
   }
 
   useEffect(() => {
@@ -40,6 +49,8 @@ const Menu = ({
       {pathname === '/' && (
         <>
           <Burger
+            maskEveryThingRelatedToMenu={maskEveryThingRelatedToMenu}
+            mask={mask}
             pathname={pathname}
             menu={menu}
             search={search}
@@ -52,6 +63,8 @@ const Menu = ({
           </SSearchBox>
           <SMenuLayer className="menu-layer" />
           <MenuNavigation
+            maskEveryThingRelatedToMenu={maskEveryThingRelatedToMenu}
+            mask={mask}
             menu={menu}
             toggleSearchAction={toggleSearchAction}
             toggleMenuAction={toggleMenuAction}
@@ -72,7 +85,6 @@ Menu.propTypes = {
   toggleSearchAction: PropTypes.func.isRequired,
   positionPlayerAction: PropTypes.func.isRequired,
   pathname: PropTypes.string.isRequired,
-  positionPlayer: PropTypes.string.isRequired,
   artistsLength: PropTypes.number.isRequired
 }
 

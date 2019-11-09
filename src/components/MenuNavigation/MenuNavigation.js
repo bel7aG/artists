@@ -1,18 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
-import { Flex, List, FavoritSVG } from 'components'
+import { Flex, List, FavoritSVG, Mask } from 'components'
 import { handleArtistsTweens, handleHomeTweens } from 'tweens'
 
 const MenuNavigation = ({
   menu,
   toggleMenuAction,
   toggleSearchAction,
-  positionPlayerAction
+  positionPlayerAction,
+  maskEveryThingRelatedToMenu,
+  mask
 }) => {
-  const handleMenuItem = () => {
+  const handleMenuItem = position => {
     toggleMenuAction(menu)
     toggleSearchAction(false)
+    maskEveryThingRelatedToMenu()
+    positionPlayerAction(position)
   }
 
   return (
@@ -42,12 +46,12 @@ const MenuNavigation = ({
           </List>
         </Flex>
         <Flex stylish={{ marginTop: '0.7rem', maxWidth: '62.5%' }}>
+          <Mask mask={mask} />
           <List className="menu-items__right">
             <h1
               onClick={() => {
-                handleMenuItem()
+                handleMenuItem('SLIDER')
                 handleHomeTweens()
-                positionPlayerAction('SLIDER')
               }}
             >
               <Link to="/">Home</Link>
@@ -55,9 +59,8 @@ const MenuNavigation = ({
             <h1
               className="artists-favorit"
               onClick={() => {
-                handleMenuItem()
+                handleMenuItem('FAVORITS')
                 handleArtistsTweens()
-                positionPlayerAction('FAVORITS')
               }}
             >
               Artists
@@ -82,7 +85,9 @@ const MenuNavigation = ({
 MenuNavigation.propTypes = {
   toggleMenuAction: PropTypes.func.isRequired,
   toggleSearchAction: PropTypes.func.isRequired,
-  menu: PropTypes.bool.isRequired
+  menu: PropTypes.bool.isRequired,
+  maskEveryThingRelatedToMenu: PropTypes.func.isRequired,
+  mask: PropTypes.bool.isRequired
 }
 
 export default MenuNavigation

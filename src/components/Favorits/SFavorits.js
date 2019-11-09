@@ -1,14 +1,4 @@
-import styled, { keyframes } from 'styled-components'
-
-const opacityIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-`
+import styled from 'styled-components'
 
 export const SFavorits = styled.div`
   position: absolute;
@@ -19,8 +9,6 @@ export const SFavorits = styled.div`
   max-height: 100vh;
   overflow: hidden;
   width: calc(100vw - 6rem);
-
-  animation: ${opacityIn} 2s ease-out;
 
   > div:first-child {
     > div:first-child {

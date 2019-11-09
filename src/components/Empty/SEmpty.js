@@ -1,4 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const opacityIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`
 
 export const SEmpty = styled.div`
   position: absolute;
@@ -8,6 +18,8 @@ export const SEmpty = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: ${opacityIn} 1s;
+
   > p {
     color: #fff;
     font-size: 2.3rem;

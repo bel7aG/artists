@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Mask } from 'components'
 
 const SearchSVG = ({ fill = '#fff', handleSearch }) => {
   return (
@@ -39,7 +38,8 @@ const SearchSVG = ({ fill = '#fff', handleSearch }) => {
 }
 
 SearchSVG.propTypes = {
-  fill: PropTypes.string
+  fill: PropTypes.string,
+  handleSearch: PropTypes.func.isRequired
 }
 
 export default SearchSVG

@@ -54,12 +54,12 @@ export const openMenuAnimation = whenSearchOpenGoFast => {
       {
         opacity: 0,
         y: 100,
-        delay: whenSearchOpenGoFast ? -1.3 : -0.7,
+        delay: whenSearchOpenGoFast ? -2.4 : -0.7,
         display: 'none'
       },
       {
         opacity: 1,
-        delay: whenSearchOpenGoFast ? -1.3 : -0.7,
+        delay: whenSearchOpenGoFast ? -2.4 : -0.7,
         y: 0,
         display: 'block',
         ease: Power2.easeInOut
@@ -160,10 +160,6 @@ export const handleArtistsTweens = () => {
       ease: Power2.easeInOut,
       delay: -3.2
     })
-    .to('.slider', 0, {
-      display: 'none',
-      delay: -1.2
-    })
   // .fromTo('.empty', 1, {
   //   display: 'none',
   //   delay: -1.2
@@ -172,22 +168,14 @@ export const handleArtistsTweens = () => {
 
 export const handleHomeTweens = () => {
   closeMenuAnimation()
-    .to(
-      '.favorits',
-      0,
-      {
-        y: '100vh',
-        ease: Power2.easeInOut
-      },
-      0
-    )
-    .to(
-      '.slider',
-      0,
-      {
-        y: 0,
-        display: 'block'
-      },
-      0
-    )
+    .to('.favorits', 1.06, {
+      y: '100vh',
+      ease: Power2.easeInOut,
+      delay: -3.2
+    })
+    .to('.slider', 1.06, {
+      y: 0,
+      delay: -3.2,
+      ease: Power2.easeInOut
+    })
 }
