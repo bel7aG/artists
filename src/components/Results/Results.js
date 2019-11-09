@@ -1,8 +1,8 @@
 import React from 'react'
+import InfiniteScroll from 'react-infinite-scroller'
 import PropTypes from 'prop-types'
 import { Artist, Scrollbar } from 'components'
 import { SResults, SResultsList } from './SResults'
-import InfiniteScroll from 'react-infinite-scroller'
 
 const Results = ({
   children,

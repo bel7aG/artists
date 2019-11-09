@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import PropTypes from 'prop-types'
-import { SSearchForm } from './SSearchForm'
-import { SearchField as renderSearchField } from 'components'
 import { fecthArtists } from 'actions'
+import { SearchField as renderSearchField } from 'components'
+import { SSearchForm } from './SSearchForm'
 
 const SearchForm = ({ handleSubmit, handleSubmitForm, text, disabled }) => {
   return (

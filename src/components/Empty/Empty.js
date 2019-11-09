@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { SEmpty } from './SEmpty'
 import { EmptyBoxSVG } from 'components'
+import { SEmpty } from './SEmpty'
 
 const Empty = ({ message }) => (
   <SEmpty className="empty">

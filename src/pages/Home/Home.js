@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { TweenMax } from 'gsap'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { SearchForm, Results, Loader } from 'components'
+import PropTypes from 'prop-types'
 import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-import { fecthArtists } from 'actions'
 import styled from 'styled-components'
+import gql from 'graphql-tag'
+import { TweenMax } from 'gsap'
+import { fecthArtists } from 'actions'
+import { SearchForm, Results, Loader } from 'components'
 import { showTween, hideTween } from 'tweens'
 
 export const SHome = styled.div`

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { SReleases, SRelease } from './SReleases'
 import { Flex } from 'components'
+import { SReleases, SRelease } from './SReleases'
 
 const Releases = ({ releases = [] }) => {
   const clonedReleases = releases.map(({ title, country, barcode }, index) => {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { SLayer, SLine } from './SLayer'
 import { StarterTweens } from 'tweens'
+import { SLayer, SLine } from './SLayer'
 
 const Layer = ({ backgroundColor = '#000', lineColor = '#262626' }) => {
   useEffect(() => {

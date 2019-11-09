@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Results, Empty } from 'components'
 import { SFavorits } from './SFavorits'
-import { connect } from 'react-redux'
 
 const Favorits = ({ favorits }) => {
   const [render, setRender] = useState(null)

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { SMenu, SMenuLayer, SSearchBox } from './SMenu'
+import { toggleMenuAction, toggleSearchAction, positionPlayerAction } from 'actions'
 import { Burger, MenuNavigation, Mask, SearchSVG } from 'components'
 import { openSearchTweens } from 'tweens'
-import { toggleMenuAction, toggleSearchAction, positionPlayerAction } from 'actions'
+import { SMenu, SMenuLayer, SSearchBox } from './SMenu'
 
 const Menu = ({
   children,

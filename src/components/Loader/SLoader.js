@@ -14,7 +14,7 @@ const linear = keyframes`
 `
 
 export const SLoader = styled.div`
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
   height: 0.4rem;

@@ -1,22 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Rating from 'react-rating'
 import { Link } from '@reach/router'
-import { deleteFavorit, selectArtist, toggleSearchAction } from 'actions'
+import Rating from 'react-rating'
+import { deleteFavorit, selectArtist } from 'actions'
+import { termCoolForLink } from 'helpers'
 import { openSearchTweens } from 'tweens'
 import { Image, FavoritSVG } from 'components'
-import { termCoolForLink } from 'helpers'
 import { SArtist, SButton } from './SArtist'
 
-const Results = ({
+const Artist = ({
   artist = {},
   positionPlayer,
   deleteFavorit,
   selectArtist,
   search,
-  isDetails,
-  toggleSearchAction
+  isDetails
 }) => {
   const {
     name,
@@ -79,14 +78,13 @@ const Results = ({
   )
 }
 
-Results.propTypes = {
+Artist.propTypes = {
   artist: PropTypes.object.isRequired,
   deleteFavorit: PropTypes.func.isRequired,
   positionPlayer: PropTypes.string.isRequired,
   selectArtist: PropTypes.func.isRequired,
-  toggleSearchAction: PropTypes.func.isRequired,
   search: PropTypes.bool.isRequired,
-  isDetails: PropTypes.bool.isRequired
+  isDetails: PropTypes.bool
 }
 
 const mapStateToProps = ({ mechanism: { positionPlayer, search } }) => ({
@@ -96,5 +94,5 @@ const mapStateToProps = ({ mechanism: { positionPlayer, search } }) => ({
 
 export default connect(
   mapStateToProps,
-  { deleteFavorit, selectArtist, toggleSearchAction }
-)(Results)
+  { deleteFavorit, selectArtist }
+)(Artist)

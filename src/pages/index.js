@@ -7,8 +7,6 @@ import Home from './Home'
 import Details from './Details'
 import NotFound from './404'
 
-import './main.scss'
-
 const App = () => {
   return (
     <Layout>

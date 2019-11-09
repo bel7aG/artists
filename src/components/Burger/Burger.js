@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { Mask } from 'components'
 import { openMenuAnimation, closeMenuAnimation } from 'tweens'
 import { SBurger } from './SBurger'
-import { Mask } from 'components'
 
 const Burger = ({
   menu,

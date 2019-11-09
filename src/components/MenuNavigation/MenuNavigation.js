@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
+
 import { Flex, List, FavoritSVG, Mask } from 'components'
 import { handleArtistsTweens, handleHomeTweens } from 'tweens'
 
@@ -29,22 +30,38 @@ const MenuNavigation = ({
         <Flex stylish={{ x: 'flex-end', minWidth: '29%', maxWidth: '22rem' }}>
           <List className="menu-items__left">
             <span>
-              <a target="_blank" href="https://bel7aG.netlify.com">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://bel7aG.netlify.com"
+              >
                 Portfolio
               </a>
             </span>
             <span>
-              <a target="_blank" href="https://www.linkedin.com/in/bel7ag">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/bel7ag"
+              >
                 LinkedIn
               </a>
             </span>
             <span>
-              <a target="_blank" href="https://github.com/bel7aG">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/bel7aG"
+              >
                 Github
               </a>
             </span>
             <span>
-              <a target="_blank" href="https://instagram.com/belhassengh">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://instagram.com/belhassengh"
+              >
                 Instagram
               </a>
             </span>
@@ -78,7 +95,11 @@ const MenuNavigation = ({
               />
             </h1>
             <h1>
-              <a target="_blank" href="https://bel7aG.netlify.com">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://bel7aG.netlify.com"
+              >
                 Creator
               </a>
             </h1>

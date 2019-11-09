@@ -1,31 +1,25 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
 import { Location } from '@reach/router'
+import { Favorits, Slider, Menu, Layer } from 'components'
 
-import { Scrollbar, Favorits, Slider, Menu, Layer, Flex, List } from 'components'
-import './Layout.scss'
-
-const Layout = ({ children, renderSlider = false }) => {
-  return (
-    <Location>
-      {({ location: { pathname } }) => {
-        return (
-          <>
-            <Menu pathname={pathname}>{children}</Menu>
-            <Layer />
-            <Slider className="scrollbar" />
-            <Favorits />
-          </>
-        )
-      }}
-    </Location>
-  )
-}
+const Layout = ({ children }) => (
+  <Location>
+    {({ location: { pathname } }) => {
+      return (
+        <>
+          <Menu pathname={pathname}>{children}</Menu>
+          <Layer />
+          <Slider className="scrollbar" />
+          <Favorits />
+        </>
+      )
+    }}
+  </Location>
+)
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  renderSlider: PropTypes.bool
+  children: PropTypes.node.isRequired
 }
 
 export default Layout

@@ -1,11 +1,74 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
 import { navigate, Redirect } from '@reach/router'
+import styled from 'styled-components'
+import { addFavorit, deleteFavorit } from 'actions'
 import { Artist, Releases, Scrollbar, Flex, FavoritSVG } from 'components'
 import { closeSearchTweens, showTween, hideTween } from 'tweens'
-import { addFavorit, deleteFavorit } from 'actions'
+
+const Details = ({
+  pickedArtist,
+  favorits,
+  addFavorit,
+  deleteFavorit,
+  positionPlayer,
+  search
+}) => {
+  useEffect(() => {
+    showTween('.page-details', 1)
+    return () => {
+      hideTween('.scrollbar', 0.2)
+      hideTween('.search-svg', 0.4)
+    }
+  }, [])
+
+  if (pickedArtist === null) {
+    return <Redirect noThrow to="/" />
+  }
+
+  const handleBackHome = () => {
+    hideTween('.page-details', 1)
+    if (positionPlayer === 'FAVORITS' && !search) {
+      closeSearchTweens()
+    }
+    setTimeout(() => {
+      navigate('/')
+    }, 1000)
+  }
+
+  const isInFavorit = favorits.find(({ id }) => id === pickedArtist.id)
+  const handleFavorit = () => {
+    if (!isInFavorit) {
+      addFavorit(pickedArtist)
+    } else {
+      deleteFavorit(pickedArtist)
+    }
+  }
+
+  const {
+    releases: { nodes: releases }
+  } = pickedArtist
+
+  return (
+    <SDetails isInFavorit={isInFavorit} className="page-details">
+      <Flex direction="row" x="space-between" flex="0.1" y="center">
+        <h1 onClick={handleBackHome}>
+          <span>Back</span>
+        </h1>
+        <div onClick={handleFavorit}>
+          <FavoritSVG />
+        </div>
+      </Flex>
+      <Scrollbar>
+        <SDetailsWrapper>
+          <Artist isDetails={true} artist={pickedArtist} />
+          <Releases releases={releases} />
+        </SDetailsWrapper>
+      </Scrollbar>
+    </SDetails>
+  )
+}
 
 const SDetails = styled.div`
   > div {
@@ -73,69 +136,6 @@ const SDetailsWrapper = styled.div`
     margin: 0 auto;
   }
 `
-
-const Details = ({
-  pickedArtist,
-  favorits,
-  addFavorit,
-  deleteFavorit,
-  positionPlayer,
-  search
-}) => {
-  useEffect(() => {
-    showTween('.page-details', 1)
-    return () => {
-      hideTween('.scrollbar', 0.2)
-      hideTween('.search-svg', 0.4)
-    }
-  }, [])
-
-  if (pickedArtist === null) {
-    return <Redirect noThrow to="/" />
-  }
-
-  const handleBackHome = () => {
-    hideTween('.page-details', 1)
-    if (positionPlayer === 'FAVORITS' && !search) {
-      closeSearchTweens()
-    }
-    setTimeout(() => {
-      navigate('/')
-    }, 1000)
-  }
-
-  const isInFavorit = favorits.find(({ id }) => id === pickedArtist.id)
-  const handleFavorit = () => {
-    if (!isInFavorit) {
-      addFavorit(pickedArtist)
-    } else {
-      deleteFavorit(pickedArtist)
-    }
-  }
-
-  const {
-    releases: { nodes: releases }
-  } = pickedArtist
-
-  return (
-    <SDetails isInFavorit={isInFavorit} className="page-details">
-      <Flex direction="row" x="space-between" flex="0.1" y="center">
-        <h1 onClick={handleBackHome}>
-          <span>Back</span>
-        </h1>
-        <div onClick={handleFavorit}>
-          <FavoritSVG />
-        </div>
-      </Flex>
-      <Scrollbar>
-        <SDetailsWrapper>
-          <Artist isDetails={true} artist={pickedArtist} />
-          <Releases releases={pickedArtist.releases.nodes} />
-        </SDetailsWrapper>
-      </Scrollbar>
-    </SDetails>
-  )
-}
 
 Details.propTypes = {
   pickedArtist: PropTypes.oneOfType([
