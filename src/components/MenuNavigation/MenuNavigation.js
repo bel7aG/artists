@@ -50,8 +50,8 @@ const MenuNavigation = ({
             </span>
           </List>
         </Flex>
+        <Mask mask={mask} />
         <Flex stylish={{ marginTop: '0.7rem', maxWidth: '62.5%' }}>
-          <Mask mask={mask} />
           <List className="menu-items__right">
             <h1
               onClick={() => {
