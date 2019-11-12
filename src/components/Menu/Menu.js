@@ -26,10 +26,15 @@ const Menu = ({
 
   const maskEveryThingRelatedToMenu = () => {
     setMask(true)
-
-    setTimeout(() => {
-      setMask(false)
-    }, 4100)
+    if (menu) {
+      setTimeout(() => {
+        setMask(false)
+      }, 2870)
+    } else {
+      setTimeout(() => {
+        setMask(false)
+      }, 3740)
+    }
   }
 
   useEffect(() => {

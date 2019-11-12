@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate, Redirect } from '@reach/router'
 import styled from 'styled-components'
 import { addFavorit, deleteFavorit } from 'actions'
-import { Artist, Releases, Scrollbar, Flex, FavoritSVG } from 'components'
+import { Artist, Mask, Releases, Scrollbar, Flex, FavoritSVG } from 'components'
 import { closeSearchTweens, showTween, hideTween } from 'tweens'
 
 const Details = ({
@@ -15,6 +15,8 @@ const Details = ({
   positionPlayer,
   search
 }) => {
+  const [maskBack, setMaskBack] = useState(false)
+
   useEffect(() => {
     showTween('.page-details', 1)
     return () => {
@@ -28,6 +30,7 @@ const Details = ({
   }
 
   const handleBackHome = () => {
+    setMaskBack(true)
     hideTween('.page-details', 1)
     if (positionPlayer === 'FAVORITS' && !search) {
       closeSearchTweens()
@@ -53,8 +56,9 @@ const Details = ({
   return (
     <SDetails isInFavorit={isInFavorit} className="page-details">
       <Flex direction="row" x="space-between" flex="0.1" y="center">
-        <h1 onClick={handleBackHome}>
-          <span>Back</span>
+        <h1>
+          <Mask mask={maskBack} />
+          <span onClick={handleBackHome}>Back</span>
         </h1>
         <div onClick={handleFavorit}>
           <FavoritSVG />

@@ -4,10 +4,10 @@ import { Flex } from 'components'
 import { SReleases, SRelease } from './SReleases'
 
 const Releases = ({ releases = [] }) => {
-  const clonedReleases = releases.map(({ title, country, barcode }, index) => {
+  const clonedReleases = releases.map(({ id, title, country, barcode }, index) => {
     if (index < 10) {
       return (
-        <SRelease>
+        <SRelease key={id}>
           <Flex direction="column" x="center" y="center">
             {title && <h1>{title}</h1>}
             {country && <h2>{country}</h2>}
