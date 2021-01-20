@@ -23,7 +23,7 @@
     "gatsby-source-graphql": "^2.1.21",
     "gatsby-transformer-sharp": "^2.2.23",
     "graphql-tag": "^2.10.1",
-    "gsap": "^2.1.3",
+    "gsap": "^3.6.0",
     "jquery": "^3.4.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
